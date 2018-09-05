@@ -1,8 +1,17 @@
 import React from 'react'
+import {HashRouter as Router, Route, Link} from 'react-router-dom'
+
+import Header from './Header'
+import Map from './Map'
 
 const App = () => {
   return (
-    <h1>React development has begun!</h1>
+    <Router>
+      <React.Fragment>
+        <Header />
+        <Map />   
+      </React.Fragment>
+    </Router>
   )
 }
 
