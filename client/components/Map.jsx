@@ -41,7 +41,7 @@ class Map extends React.Component {
 
     render(){
         return(
-            <div id='map' style={{ height: '100vh', width: '100%' }}>
+            <div id='map' style={{ height: '82vh', width: '100%' }}>
             <SideInfo />
             <GoogleMapReact
               bootstrapURLKeys={{key:"AIzaSyC1GuaSVOn1QvNgS0ysm9mH4V7c7yurAoI"}}

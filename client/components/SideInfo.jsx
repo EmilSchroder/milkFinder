@@ -23,7 +23,7 @@ class SideInfo extends React.Component {
     render(){
         return(
             <div id='sideInfo' className='sidenav'>
-                Hi
+                <button className='close'>&times;</button>
             </div>
         )
     }
