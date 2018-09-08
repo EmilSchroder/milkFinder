@@ -5,6 +5,8 @@ import {getAllCafes} from '../cafeApi/cafeApi'
 
 import Marker from './Marker'
 import SideInfo from './SideInfo'
+import Header from './Header'
+import { log } from 'handlebars';
 
 class Map extends React.Component {
     constructor(props){
@@ -12,13 +14,15 @@ class Map extends React.Component {
         
         this.state = {
             cafes: [],
-            activeCafe: {}
+            activeCafe: {},
+            searchedMilk: 'cow'
         }
         
         this.viewAllCafes = this.viewAllCafes.bind(this)
         this.showSideInfo = this.showSideInfo.bind(this)
         this.closeSideBar = this.closeSideBar.bind(this)
         this.activateCafe = this.activateCafe.bind(this)
+        this.searchMilk = this.searchMilk.bind(this)
     }
 
     componentDidMount(){
@@ -36,10 +40,23 @@ class Map extends React.Component {
             )
     }
 
+    searchMilk(milk){
  
+        this.setState({
+            searchedMilk: milk
+        })
+        
+        
+        // let searchedCafe = this.state.cafes.filter((cafe) =>{
+        //     this.state.cafes[cafe][milk] == 1
+        // })
+
+        // console.log(searchedCafe)
+        
+            
+    }
 
     showSideInfo(info){
-        console.log('click on');
         document.getElementById("sideInfo").style.width = "300px";
         this.activateCafe(info)
         
@@ -52,30 +69,36 @@ class Map extends React.Component {
     }
 
     closeSideBar(){
-        console.log('click off');
         document.getElementById("sideInfo").style.width = "0";
     }
 
     render(){
         return(
-            <div id='map' style={{ height: '82vh', width: '100%' }}>
-            <SideInfo   closeSideBar={this.closeSideBar}
-                        activeCafe={this.state.activeCafe}/>
-            <GoogleMapReact
-              bootstrapURLKeys={{key:"AIzaSyC1GuaSVOn1QvNgS0ysm9mH4V7c7yurAoI"}}
-              defaultCenter={ {lat: -41.2969757, lng: 174.7742823} }
-              defaultZoom={9}
-            >
-            
-                {this.state.cafes.map(cafes => {                  
-                    return <Marker key={cafes.id}
-                    lat={cafes.latitude}
-                    lng={cafes.longitude}
-                    cafeId={cafes.id}
-                    showSideInfo={this.showSideInfo}/>
-                })}  
-            </GoogleMapReact>          
-          </div>
+
+            <React.Fragment>
+                <Header searchMilk={this.searchMilk}/>
+                <div id='map' style={{ height: '82vh', width: '100%' }}>
+                    <SideInfo   closeSideBar={this.closeSideBar}
+                                activeCafe={this.state.activeCafe}/>
+                    <GoogleMapReact
+                    bootstrapURLKeys={{key:"AIzaSyC1GuaSVOn1QvNgS0ysm9mH4V7c7yurAoI"}}
+                    defaultCenter={ {lat: -41.2969757, lng: 174.7742823} }
+                    defaultZoom={9}
+                    >
+                    
+                        {this.state.cafes.map(cafes => { 
+                            if (cafes[this.state.searchedMilk]==1){
+                            return <Marker key={cafes.id}
+                            lat={cafes.latitude}
+                            lng={cafes.longitude}
+                            cafeId={cafes.id}
+                            showSideInfo={this.showSideInfo}/>
+                            }           
+
+                        })}  
+                    </GoogleMapReact>          
+            </div>
+          </React.Fragment>
         )
     }
 }

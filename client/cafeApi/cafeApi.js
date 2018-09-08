@@ -26,3 +26,5 @@ export function getOneCafe(page){
         throw Error(`You need to implement an API route for /v1/cafe/${id}`)
       })
 }
+
+
