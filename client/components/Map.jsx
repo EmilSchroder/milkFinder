@@ -15,7 +15,7 @@ class Map extends React.Component {
         this.state = {
             cafes: [],
             activeCafe: {},
-            searchedMilk: 'cow'
+            searchedMilk: 'all'
         }
         
         this.viewAllCafes = this.viewAllCafes.bind(this)
@@ -44,16 +44,7 @@ class Map extends React.Component {
  
         this.setState({
             searchedMilk: milk
-        })
-        
-        
-        // let searchedCafe = this.state.cafes.filter((cafe) =>{
-        //     this.state.cafes[cafe][milk] == 1
-        // })
-
-        // console.log(searchedCafe)
-        
-            
+        })        
     }
 
     showSideInfo(info){
@@ -87,7 +78,7 @@ class Map extends React.Component {
                     >
                     
                         {this.state.cafes.map(cafes => { 
-                            if (cafes[this.state.searchedMilk]==1){
+                            if (this.state.searchedMilk == 'all' || cafes[this.state.searchedMilk]==1){
                             return <Marker key={cafes.id}
                             lat={cafes.latitude}
                             lng={cafes.longitude}
