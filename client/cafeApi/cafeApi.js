@@ -13,3 +13,17 @@ export function getAllCafes(){
         throw Error('You need to implement an API route for /v1/cafe')
       })
 }
+
+export function getOneCafe(page){
+    console.log(`/v1/cafes/${page}`)
+    
+    return request.get(`/v1/cafes/${page}`)
+    .then(res => {
+        const home = res.body
+        
+        return home
+      })
+      .catch(() => {
+        throw Error(`You need to implement an API route for /v1/cafe/${id}`)
+      })
+}
