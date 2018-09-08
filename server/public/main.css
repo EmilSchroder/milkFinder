@@ -1,0 +1,58 @@
+body{
+    margin:0;
+}
+
+#sideInfo {
+    color: white;
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    right: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    /* padding-top: 60px; */
+}
+
+.close{
+    position: absolute;
+    top:3px;
+    left:10px;
+    background-color: #111;
+    color: grey;
+    font-size: 4em;
+    border: none;
+}
+
+.sidenav h1{
+    margin: 3em 15px 0 1em;
+    text-decoration: none;
+    font-size: 30px;
+    text-decoration-line: underline;
+    color: white;
+    display: block;
+}
+.sidenav :hover {
+
+    cursor: default;
+
+}
+
+
+.sidenav p{
+    margin: 1em 5px 0 1em;
+    text-decoration: none;
+    font-size: 25px;
+    color: white;
+    display: block;
+
+}
+
+.header{
+    margin-right: 20px;
+    height: 14vh;
+    width: 100%;
+}
+
+
