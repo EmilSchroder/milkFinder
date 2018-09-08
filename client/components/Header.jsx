@@ -2,7 +2,7 @@ import React from 'react'
 
 const Header = () => {
   return (
-    <div className='header' style={{ height: '14vh', width: '100%' }}>
+    <div className='header'>
         <h2>This is a header</h2> 
         <input type='text' name='search' placeholder='cafe or milk'/>
         <button type='button'>Search Cafe</button>

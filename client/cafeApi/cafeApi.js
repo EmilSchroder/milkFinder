@@ -15,7 +15,6 @@ export function getAllCafes(){
 }
 
 export function getOneCafe(page){
-    console.log(`/v1/cafes/${page}`)
     
     return request.get(`/v1/cafes/${page}`)
     .then(res => {

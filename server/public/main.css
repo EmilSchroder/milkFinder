@@ -25,6 +25,34 @@ body{
     border: none;
 }
 
-.header{
-    z-index: 2;
+.sidenav h1{
+    margin: 3em 15px 0 1em;
+    text-decoration: none;
+    font-size: 30px;
+    text-decoration-line: underline;
+    color: white;
+    display: block;
 }
+.sidenav :hover {
+
+    cursor: default;
+
+}
+
+
+.sidenav p{
+    margin: 1em 5px 0 1em;
+    text-decoration: none;
+    font-size: 25px;
+    color: white;
+    display: block;
+
+}
+
+.header{
+    margin-right: 20px;
+    height: 14vh;
+    width: 100%;
+}
+
+
