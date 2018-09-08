@@ -4,11 +4,13 @@ import {getOneCafe} from '../cafeApi/cafeApi'
 
 
 
+
 class Marker extends React.Component {
     constructor(props){
         super(props)
     
-
+            console.log(props)
+            
         this.state = {
             cafe: {}
         }
@@ -16,7 +18,6 @@ class Marker extends React.Component {
         
 
         this.viewCafeMark = this.viewCafeMark.bind(this)
-        this.showInfo = this.showInfo.bind(this)
     }
 
     componentDidMount(){
@@ -32,24 +33,12 @@ class Marker extends React.Component {
             }))
     }
 
-    showInfo(){
-
-    }
-
 
     render(){
         return(
             <React.Fragment>  
 
-            <div className='infoBox' style={{
-                color: 'black',
-                background: 'white',
-                width: '100px',
-                height: '100px'
-            }}>
-                <h5>{this.state.cafe.cafe}</h5>
-                
-            </div>
+
             {/* <svg>
                 <circle cx="10" cy="10" r="10" fill='red' onClick={()=> this.showInfo(name)}>Emil</circle>
             </svg>  */} */}
@@ -64,7 +53,7 @@ class Marker extends React.Component {
                 justifyContent: 'center',
                 borderRadius: '100%',
                 transform: 'translate(-50%, -50%)'
-            }} onClick={()=> this.showInfo(name)}>
+            }} onClick={() => this.props.showSideInfo(this.state.cafe)} >
                 Emil
             </div>
               </React.Fragment>     
@@ -72,5 +61,5 @@ class Marker extends React.Component {
         )
     }
 }
-
+// onClick={()=> this.showSideInfo()}
 export default Marker
