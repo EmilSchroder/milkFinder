@@ -40,21 +40,13 @@ class Marker extends React.Component {
 
             {/* <svg>
                 <circle cx="10" cy="10" r="10" fill='red' onClick={()=> this.showInfo(name)}>Emil</circle>
-            </svg>  */} */}
+            </svg>  */}
             
-            <div style={{
-                color: 'white', 
-                background: 'grey',
-                padding: '15px 10px',
+            <img src={this.state.cafe.coconut ? './images/threemilk.png' : (this.state.cafe.almond ? './images/twomilk.png': './images/onemilk.png')} style={{
                 display: 'inline-flex',
-                textAlign: 'center',
                 alignItems: 'center',
                 justifyContent: 'center',
-                borderRadius: '100%',
-                transform: 'translate(-50%, -50%)'
-            }} onClick={() => this.props.showSideInfo(this.state.cafe)} >
-                Emil
-            </div>
+            }} onClick={() => this.props.showSideInfo(this.state.cafe)} />
               </React.Fragment>     
 
         )
