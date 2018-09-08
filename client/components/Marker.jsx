@@ -17,11 +17,14 @@ class Marker extends React.Component {
         
 
         this.viewCafeMark = this.viewCafeMark.bind(this)
+        this.countMilks = this.countMilks.bind(this)
     }
 
     componentDidMount(){
         this.viewCafeMark()
+        
     }
+
 
     viewCafeMark(){
    
@@ -32,17 +35,20 @@ class Marker extends React.Component {
             }))
     }
 
+    countMilks(){
+        let keys = Object.keys(this.state.cafe).filter(milk => this.state.cafe[milk]== 1||0)
+
+        return keys.length
+        
+    }
+
 
     render(){
         return(
-            <React.Fragment>  
+            <React.Fragment>
 
 
-            {/* <svg>
-                <circle cx="10" cy="10" r="10" fill='red' onClick={()=> this.showInfo(name)}>Emil</circle>
-            </svg>  */}
-            
-            <img src={this.state.cafe.coconut ? './images/threemilk.png' : (this.state.cafe.almond ? './images/twomilk.png': './images/onemilk.png')} style={{
+            <img src={this.countMilks() > 4 ? './images/fourmilk.png' : (this.countMilks() > 3 ? './images/threemilk.png' : (this.countMilks() > 2 ? './images/twomilk.png': './images/onemilk.png'))} style={{
                 display: 'inline-flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -52,5 +58,4 @@ class Marker extends React.Component {
         )
     }
 }
-// onClick={()=> this.showSideInfo()}
 export default Marker
