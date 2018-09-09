@@ -33,7 +33,9 @@ class Header extends React.Component {
             <option value="rice">Rice</option>
           </select>
           <button onClick={()=>this.props.searchMilk(this.state.search)}>Search Milk</button>
+                  <a href='#/addCafe'>add a cafe</a>
     </div>
+
         /* <input  type='text' 
                 name='search' 
                 placeholder='cafe or milk'

@@ -47,13 +47,15 @@ class Marker extends React.Component {
         return(
             <React.Fragment>
 
-
+            <figure className='icon'>
             <img src={this.countMilks() > 4 ? './images/fourmilk.png' : (this.countMilks() > 3 ? './images/threemilk.png' : (this.countMilks() > 2 ? './images/twomilk.png': './images/onemilk.png'))} style={{
                 display: 'inline-flex',
                 alignItems: 'center',
                 justifyContent: 'center',
             }} onClick={() => this.props.showSideInfo(this.state.cafe)} />
-              </React.Fragment>     
+            <figcaption className='tooltiptext'>{this.state.cafe.cafe}</figcaption>
+            </figure>
+              </React.Fragment>   
 
         )
     }

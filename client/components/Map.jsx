@@ -6,7 +6,6 @@ import {getAllCafes} from '../cafeApi/cafeApi'
 import Marker from './Marker'
 import SideInfo from './SideInfo'
 import Header from './Header'
-import { log } from 'handlebars';
 
 class Map extends React.Component {
     constructor(props){
@@ -75,7 +74,7 @@ class Map extends React.Component {
                     bootstrapURLKeys={{key:"AIzaSyC1GuaSVOn1QvNgS0ysm9mH4V7c7yurAoI"}}
                     defaultCenter={ {lat: -41.2969757, lng: 174.7742823} }
                     defaultZoom={9}
-                    >
+                    onClick={()=> this.closeSideBar()}>
                     
                         {this.state.cafes.map(cafes => { 
                             if (this.state.searchedMilk == 'all' || cafes[this.state.searchedMilk]==1){
