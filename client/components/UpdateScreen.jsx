@@ -8,8 +8,26 @@ class UpdateScreen extends React.Component {
         super(props)
 
         this.state={
-            meh: ''
+            facts: {
+                cafe: ''
+            }
         }
+        this.handleSubmit = this.handleSubmit.bind(this)
+    }
+
+    handleSubmit(e){
+        e.preventDefault()
+        console.log(e.target.value)
+    }
+
+    handleChange(e){
+        this.setState({
+            facts: {
+                [e.target.name]:e.target.value
+            }
+        })
+        console.log(e.target.name);
+        
     }
     render(){
         return(
@@ -17,22 +35,28 @@ class UpdateScreen extends React.Component {
             <div>
                 <TitleHead />
                 <div>
-                   <form>
-                       <input name='newName' type='text' placeholder="Cafe Name"/>
+                   <form onSubmit={this.handleSubmit}>
+                       <input name='newName' type='text' placeholder="Cafe Name" onChange={(e)=>{
+                           this.handleChange(e)}}/>
                        <input name='newLat' type='text' placeholder="Latitude"/>
                        <input name='newLong' type='text' placeholder="Longitude"/>
                        <div>
                            Milks<br></br>
                            <label>Cow</label>
-                            <input name='cow' type='checkbox'></input>
+                            <input name='cow' type='checkbox' onChange={(e)=>{
+                           this.handleChange(e)}}></input>
                            <label>soy</label>
-                            <input name='soy' type='checkbox'></input>
+                            <input name='soy' type='checkbox' onChange={(e)=>{
+                           this.handleChange(e)}}></input>
                            <label>almond</label>
-                            <input name='almond' type='checkbox'></input>
+                            <input name='almond' type='checkbox' onChange={(e)=>{
+                           this.handleChange(e)}}></input>
                             <label>coconut</label>
-                            <input name='coconut' type='checkbox'></input>
+                            <input name='coconut' type='checkbox' onChange={(e)=>{
+                           this.handleChange(e)}}></input>
                            <label>rice</label>
-                            <input name='rice' type='checkbox'></input>
+                            <input name='rice' type='checkbox' onChange={(e)=>{
+                           this.handleChange(e)}}></input>
                         </div>
                         <input type='submit'/>
                    </form>
