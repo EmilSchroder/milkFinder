@@ -1,4 +1,5 @@
 import React from 'react'
+import TitleHead from './TitleHead'
 
 class Header extends React.Component {
   constructor(props){
@@ -21,7 +22,8 @@ class Header extends React.Component {
   render(){
   return (
     <div className='header'>
-        <h2>This is a header</h2> 
+        <TitleHead />
+        <div className='flex'>
           <select name="milk"
                 onChange={(e) => {
                   this.searchTerm(e.target.value)}}>
@@ -34,6 +36,7 @@ class Header extends React.Component {
           </select>
           <button onClick={()=>this.props.searchMilk(this.state.search)}>Search Milk</button>
                   <a href='#/addCafe'>add a cafe</a>
+        </div>
     </div>
 
         /* <input  type='text' 

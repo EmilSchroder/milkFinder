@@ -76,3 +76,26 @@ body{
 .icon:hover .tooltiptext{
     visibility: visible;
 }
+
+.wrapper{
+    display: flex;
+    justify-content: center;
+    background-color: black;
+    color: white;
+    height: 63%
+}
+
+#mainhead{
+    font-size: 2em;
+    padding: -5px 0 0 0;
+    margin: 0;
+    margin-top: 18px;
+}
+
+.flex{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    height: 37%;
+    background-color: grey
+}
