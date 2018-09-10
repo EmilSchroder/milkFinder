@@ -7,60 +7,78 @@ class UpdateScreen extends React.Component {
     constructor(props){
         super(props)
 
-        this.state={
-            facts: {
-                cafe: ''
-            }
+        this.state = {
+                cafename:'',
+                lat:'',
+                lon:'',
+                Cowcheck: false,
+                Soycheck: false,
+                Almondcheck: false,
+                Coconutcheck: false,
+                Ricecheck: false
         }
+
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleCheckboxChange = this.handleCheckboxChange.bind(this)
+        this.handleTextChange = this.handleTextChange.bind(this)
     }
 
     handleSubmit(e){
+ 
         e.preventDefault()
-        console.log(e.target.value)
     }
 
-    handleChange(e){
-        this.setState({
-            facts: {
-                [e.target.name]:e.target.value
-            }
-        })
-        console.log(e.target.name);
-        
+    handleCheckboxChange(e){
+        let key = e.target.name
+        this.setState(prevState => ({
+            [key]: !prevState[key]
+        }))
     }
+
+    handleTextChange(e){
+        let key = e.target.name
+        let value = e.target.value
+        console.log(`key: ${key} and value: ${value}`);
+        
+        this.setState({
+            [key]: value
+        })
+    }    
+        
+    
+
     render(){
         return(
 
             <div>
                 <TitleHead />
-                <div>
-                   <form onSubmit={this.handleSubmit}>
-                       <input name='newName' type='text' placeholder="Cafe Name" onChange={(e)=>{
-                           this.handleChange(e)}}/>
-                       <input name='newLat' type='text' placeholder="Latitude"/>
-                       <input name='newLong' type='text' placeholder="Longitude"/>
-                       <div>
-                           Milks<br></br>
-                           <label>Cow</label>
-                            <input name='cow' type='checkbox' onChange={(e)=>{
-                           this.handleChange(e)}}></input>
-                           <label>soy</label>
-                            <input name='soy' type='checkbox' onChange={(e)=>{
-                           this.handleChange(e)}}></input>
-                           <label>almond</label>
-                            <input name='almond' type='checkbox' onChange={(e)=>{
-                           this.handleChange(e)}}></input>
-                            <label>coconut</label>
-                            <input name='coconut' type='checkbox' onChange={(e)=>{
-                           this.handleChange(e)}}></input>
-                           <label>rice</label>
-                            <input name='rice' type='checkbox' onChange={(e)=>{
-                           this.handleChange(e)}}></input>
-                        </div>
-                        <input type='submit'/>
-                   </form>
-                </div>
+                <a href='/#'>Home</a><a href='/#/addCafe'>CafeADD</a>
+                <form onSubmit={this.handleSubmit}>
+                    <input type='text' placeholder='Cafe Name' name='cafename' onChange={this.handleTextChange} />
+                    <input type='text' placeholder='Latitude' name='lat' onChange={this.handleTextChange} />
+                    <input type='text' placeholder='Longitude' name='lon' onChange={this.handleTextChange} />
+                    <label>
+                        Cow
+                        <input type='checkbox' onClick={this.handleCheckboxChange} name='Cowcheck'/>
+                    </label>
+                    <label>
+                        Soy
+                        <input type='checkbox' onClick={this.handleCheckboxChange} name='Soycheck'/>
+                    </label>
+                    <label>
+                        Almond
+                        <input type='checkbox' onClick={this.handleCheckboxChange} name='Almondcheck'/>
+                    </label>
+                    <label>
+                        Coconut
+                        <input type='checkbox' onClick={this.handleCheckboxChange} name='Coconutcheck'/>
+                    </label>
+                    <label>
+                        Rice
+                        <input type='checkbox' onClick={this.handleCheckboxChange} name='Ricecheck'/>
+                    </label>
+                    <input type='submit' value="Submit"/>
+                </form>
             </div>
         )
     }
