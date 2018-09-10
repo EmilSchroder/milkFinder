@@ -18,17 +18,11 @@ function getCafeById(id, testConn){
 
 function addACafe(cafeobj, testConn){
     let conn = testConn || db
-    console.log('db');
     
-    return conn('Cafes').insert({
-      cafe: cafeobj.cafename,
-      latitude: cafeobj.lat,
-      longitude: cafeobj.lon,
-      cow: cafeobj.Cowcheck,
-      soy: cafeobj.Soycheck,
-      almond: cafeobj.Almondcheck,
-      coconut: cafeobj.Cocountcheck,
-      rice: cafeobj.ricecheck
+    
+    return conn('Cafes')
+    .insert({
+        cafe: 'the best'
     })
 
 }
