@@ -1,6 +1,8 @@
 import React from 'react'
 import TitleHead from './TitleHead'
 
+import {addCafe} from '../cafeApi/cafeApi'
+
 
 
 class UpdateScreen extends React.Component {
@@ -24,7 +26,7 @@ class UpdateScreen extends React.Component {
     }
 
     handleSubmit(e){
- 
+        addCafe(this.state)
         e.preventDefault()
     }
 
@@ -38,8 +40,6 @@ class UpdateScreen extends React.Component {
     handleTextChange(e){
         let key = e.target.name
         let value = e.target.value
-        console.log(`key: ${key} and value: ${value}`);
-        
         this.setState({
             [key]: value
         })

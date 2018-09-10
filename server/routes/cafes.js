@@ -11,6 +11,15 @@ router.get('/', (req,res) => {
 
 })
 
+router.post('/', (req,res) => {
+
+    console.log('router');
+    
+    db.addACafe(req.body.cafename)
+
+
+})
+
 router.get('/:id', (req,res)=>{
     let id = req.params.id
 

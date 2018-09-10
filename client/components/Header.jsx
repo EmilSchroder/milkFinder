@@ -12,11 +12,14 @@ class Header extends React.Component {
     this.searchTerm = this.searchTerm.bind(this)
   }
 
+
   searchTerm(searchWord){
     
     this.setState({
       search: searchWord
     })
+    
+ 
   }
   
   render(){

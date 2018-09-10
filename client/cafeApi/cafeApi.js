@@ -10,7 +10,7 @@ export function getAllCafes(){
         return home
       })
       .catch(() => {
-        throw Error('You need to implement an API route for /v1/cafe')
+        throw Error('You need to implement an API route for /v1/cafes')
       })
 }
 
@@ -23,8 +23,15 @@ export function getOneCafe(page){
         return home
       })
       .catch(() => {
-        throw Error(`You need to implement an API route for /v1/cafe/${id}`)
+        throw Error(`You need to implement an API route for /v1/cafes/${id}`)
       })
 }
 
 
+export function addCafe(cafe){
+    return request.post('/v1/cafes')
+        .send(cafe)
+          .catch(() => {
+            throw Error('You need to implement an API route for /v1/cafes')
+          })
+}
