@@ -22,7 +22,15 @@ function addACafe(cafeobj, testConn){
     
     return conn('Cafes')
     .insert({
-        cafe: 'the best'
+        cafe: cafeobj.cafename,
+        latitude: cafeobj.lat,
+        longitude: cafeobj.lon,
+        cow: cafeobj.Cowcheck,
+        soy: cafeobj.Soycheck,
+        almond: cafeobj.Almondcheck,
+        coconut: cafeobj.Coconutcheck,
+        rice: cafeobj.Ricecheck
+    
     })
 
 }

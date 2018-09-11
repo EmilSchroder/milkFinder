@@ -13,6 +13,9 @@ module.exports = {
       exclude: /node_modules/
     }]
   },
+  watchOptions: {
+    poll: true
+  },
   resolve: {
     extensions: ['.js', '.jsx']
   },

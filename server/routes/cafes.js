@@ -14,22 +14,10 @@ router.get('/', (req,res) => {
 router.post('/', (req,res) => {
 
     console.log('router')
-    
-// let newCafe = {
-//     cafe: cafeobj.cafename,
-//     latitude: JSON.stringify(req.body.lat),
-//     longitude: JSON.stringify(req.body.lon),
-//     cow: JSON.stringify(req.body.Cowcheck),
-//     soy: JSON.stringify(req.body.Soycheck),
-//     almond: JSON.stringify(req.body.Almondcheck),
-//     coconut: JSON.stringify(req.body.Cocountcheck),
-//     rice: JSON.stringify(req.body.ricecheck)
-// }
-
-
-
-    db.addACafe(req.body)
-
+      db.addACafe(req.body)
+    .catch((err) => {
+        console.log(err)
+    })
 
 })
 
