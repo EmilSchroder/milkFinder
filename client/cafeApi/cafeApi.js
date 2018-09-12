@@ -1,6 +1,6 @@
 import request from 'superagent'
 
-let apiLink = 'http://localhost:3000/v1/cafes'
+let apiLink = 'https://milkfinder.herokuapp.com/v1/cafes'
 
 export function getAllCafes(){
     
