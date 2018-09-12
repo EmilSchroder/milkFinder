@@ -75,7 +75,6 @@ class Map extends React.Component {
                     bootstrapURLKeys={{key:"AIzaSyC1GuaSVOn1QvNgS0ysm9mH4V7c7yurAoI"}}
                     defaultCenter={ {lat: -41.2969757, lng: 174.7742823} }
                     defaultZoom={9}
-                    center={{lat: this.state.activeCafe.latitude,lng: this.state.activeCafe.longitude}}
                     onClick={()=> this.closeSideBar()}>
                     
                         {this.state.cafes.map(cafes => { 
