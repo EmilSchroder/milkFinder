@@ -8,6 +8,18 @@ function getAllCafes(testConn) {
   return conn('Cafes').select();
 }
 
+function addCafe(name, lat, long, web, testConn){
+  let conn = testConn || db;
+  
+  return conn('Cafes')
+    .insert({
+      cafe_name : name,
+      latitude : lat,
+      longitude : long,
+      website: web
+    })
+}
+
 
 function getCafeById(id, testConn) {
   let conn = testConn || db;
@@ -54,5 +66,6 @@ module.exports = {
   getAllMilks,
   getMilkById,
   getCafesByMilk,
-  getMilksByCafe
+  getMilksByCafe,
+  addCafe
 };

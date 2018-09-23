@@ -19,5 +19,20 @@ router.get('/:id/milks', (req,res) => {
   db.getMilksByCafe(cafeId).then(milks => res.json(milks))
 })
 
+router.post('/', (req,res)=>{
+  const {cafe_name, latitude, longitude, website} = req.body
+  console.log(req.body);
+  
+  db.addCafe(cafe_name, latitude, longitude, website)
+    .then(id => {
+      if(id){
+        return res.send({"message":"Added to database" , "id" : id[0]})
+      }})
+    .catch(err => {
+      res.status(500).send({message: err.message})
+    })
+      
+})
+
 
 module.exports = router;
