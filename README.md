@@ -143,3 +143,32 @@ Retrieves the array of cafes that serve a certain milk
 
 
 ```
+### GET /api/cafes/:id/milks
+Retrieves the array of milks that are served at a certain cafe
+#### Response
+
+```
+
+[
+    {
+        "id": 8001,
+        "milk_type" : "Cow"
+        "cafe_id": 4001,
+        "milk_id": 2001
+    },
+    {
+        "id": 8002,
+        "milk_type" : "Soy"
+        "cafe_id": 4001,
+        "milk_id": 2002
+    },    {
+        "id": 8003,
+        "milk_type" : "Almond"
+        "cafe_id": 4001,
+        "milk_id": 2003
+    }
+]
+
+
+
+```

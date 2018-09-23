@@ -39,11 +39,20 @@ function getCafesByMilk(milkId, testConn){
     .where('Cafes_and_Milks.milk_id', milkId)
 }
 
+function getMilksByCafe(cafeId, testConn){
+  let conn = testConn || db;
+
+  return conn('Milks')
+    .join('Cafes_and_Milks', 'Milks.id', 'Cafes_and_Milks.milk_id')
+    .where('Cafes_and_Milks.cafe_id', cafeId)
+}
+
 
 module.exports = {
   getAllCafes,
   getCafeById,
   getAllMilks,
   getMilkById,
-  getCafesByMilk
+  getCafesByMilk,
+  getMilksByCafe
 };

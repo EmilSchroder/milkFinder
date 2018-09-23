@@ -13,5 +13,11 @@ router.get('/:id', (req, res) => {
   db.getCafeById(id).then(cafe => res.json(cafe));
 });
 
+router.get('/:id/milks', (req,res) => {
+  let cafeId = req.params.id
+
+  db.getMilksByCafe(cafeId).then(milks => res.json(milks))
+})
+
 
 module.exports = router;
