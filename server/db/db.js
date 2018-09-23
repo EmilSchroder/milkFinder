@@ -16,24 +16,6 @@ function getCafeById(id, testConn) {
     .first();
 }
 
-// function addACafe(cafeobj, testConn){
-//     let conn = testConn || db
-
-//     return conn('Cafes')
-//     .insert({
-//     cafe: cafeobj.cafename,
-//     latitude: JSON.stringify(req.body.lat),
-//     longitude: JSON.stringify(req.body.lon),
-//     cow: JSON.stringify(req.body.Cowcheck),
-//     soy: JSON.stringify(req.body.Soycheck),
-//     almond: JSON.stringify(req.body.Almondcheck),
-//     coconut: JSON.stringify(req.body.Cocountcheck),
-//     rice: JSON.stringify(req.body.ricecheck)
-// }
-//     )
-
-// }
-
 module.exports = {
   getAllCafes,
   getCafeById,

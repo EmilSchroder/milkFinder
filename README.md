@@ -1,16 +1,71 @@
-# A starter webpack project for React
+# Find the milk a cafe has
 
-This is a starter project that uses webpack to transpile and bundle ES6 React code. To use, consider these steps:
+This project is to give Wellingtonians a view of what milks are available at what cafes in their cities. 
 
-* Fork this repo
-* Rename your repo according to the app you're building
 
-```sh
-git clone https://github.com/[your-account]/[your-app].git
-cd [your-app] && yarn
+## Database Tables:
+
+####Cafes
+Column_name | Datatype
+--- | ---
+id | integer
+cafe_name | string
+latitude | float
+longitude | float
+website | string
+
+####Milks
+Column_name | Datatype
+--- | ---
+id | integer
+milk_type | string
+
+
+####Cafes_and_Milks
+Column_name | Datatype
+--- | ---
+id | integer
+cafe_id | integer
+milk_id | integer
+
+
+##API doc: request and response format
+
+###GET /api/cafes
+####Request
+```
+{
+    [
+        {
+            "id" : 4001,
+            "cafe_name" : "Milk Crate",
+            "latitude" : -41.2936,
+            "longitude" : 174.7764,
+            "website" : "www.milkcrate.co.nz"
+        },
+        {
+            "id" : 4002,
+            "cafe_name" : "Deluxe Espresso Bar",
+            "latitude" : -41.2943,
+            "longitude" : 174.7841,
+            "website" : "www.facebook.com/deluxecafewgtn"
+        }
+    ]
+}
 ```
 
-To start the development server with a watcher that rebuilds your code, run `yarn dev`. The assets built by webpack are placed in `server/public`. This folder is defined as a static folder in an Express.js server that can be started with `npm run server`.
-
-Additional components should be placed in `client/components`.
-
+###GET /api/cafes/:id
+####Request
+```
+{
+    [
+        {
+            "id" : 4001,
+            "cafe_name" : "Milk Crate",
+            "latitude" : -41.2936,
+            "longitude" : 174.7764,
+            "website" : "www.milkcrate.co.nz"
+        }
+    ]
+}
+```
