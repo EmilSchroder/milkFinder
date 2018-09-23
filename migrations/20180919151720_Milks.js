@@ -1,12 +1,7 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('Milks', table => {
     table.increments('id').primary;
-    table.boolean('Cow');
-    table.boolean('Soy');
-    table.boolean('Almond');
-    table.boolean('Coconut');
-    table.boolean('Oat');
-    table.boolean('Rice');
+    table.string('Milk_type');
   });
 };
 
