@@ -5,7 +5,7 @@ This project is to give Wellingtonians a view of what milks are available at wha
 
 ## Database Tables:
 
-####Cafes
+###Cafes
 
 Column_name | Datatype
 --- | ---
@@ -15,7 +15,7 @@ latitude | float
 longitude | float
 website | string
 
-####Milks
+###Milks
 
 Column_name | Datatype
 --- | ---
@@ -23,7 +23,7 @@ id | integer
 milk_type | string
 
 
-####Cafes_and_Milks
+###Cafes_and_Milks
 
 Column_name | Datatype
 --- | ---
