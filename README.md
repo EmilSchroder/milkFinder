@@ -6,6 +6,7 @@ This project is to give Wellingtonians a view of what milks are available at wha
 ## Database Tables:
 
 ####Cafes
+
 Column_name | Datatype
 --- | ---
 id | integer
@@ -15,6 +16,7 @@ longitude | float
 website | string
 
 ####Milks
+
 Column_name | Datatype
 --- | ---
 id | integer
@@ -22,6 +24,7 @@ milk_type | string
 
 
 ####Cafes_and_Milks
+
 Column_name | Datatype
 --- | ---
 id | integer
@@ -32,8 +35,11 @@ milk_id | integer
 ##API doc: request and response format
 
 ###GET /api/cafes
+
 ####Request
+
 ```
+
 {
     [
         {
@@ -52,11 +58,15 @@ milk_id | integer
         }
     ]
 }
+
 ```
 
 ###GET /api/cafes/:id
+
 ####Request
+
 ```
+
 {
     [
         {
@@ -68,4 +78,5 @@ milk_id | integer
         }
     ]
 }
+
 ```
