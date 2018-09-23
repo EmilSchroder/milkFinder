@@ -8,15 +8,38 @@ function getAllCafes(testConn) {
   return conn('Cafes').select();
 }
 
+function cafeExists(cafe_name, testConn){
+  let conn = testConn || db;
+  return conn('Cafes')
+    .select()
+    .where("cafe_name", cafe_name)
+}
+
+function milkExists(milk_type, testConn){
+  let conn = testConn || db;
+  return conn('Milks')
+    .select()
+    .where("milk_type", milk_type)
+}
+
 function addCafe(name, lat, long, web, testConn){
   let conn = testConn || db;
-  
+
   return conn('Cafes')
     .insert({
       cafe_name : name,
       latitude : lat,
       longitude : long,
       website: web
+    })
+}
+
+function addMilk(name, testConn){
+  let conn = testConn || db;
+
+  return conn('Milks')
+    .insert({
+      milk_type : name,
     })
 }
 
@@ -67,5 +90,8 @@ module.exports = {
   getMilkById,
   getCafesByMilk,
   getMilksByCafe,
-  addCafe
+  addCafe,
+  cafeExists,
+  addMilk,
+  milkExists
 };

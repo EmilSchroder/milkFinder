@@ -7,6 +7,25 @@ router.get('/', (req,res) => {
     db.getAllMilks().then(milks => res.json(milks));
 })
 
+router.post('/', (req,res)=>{
+    const {milk_type} = req.body
+  
+    db.milkExists(milk_type)
+      .then(exists => {
+        if(exists.length>0){
+          return res.status(400).send({message: 'Milk already registered'})
+        }
+      db.addMilk(milk_type)
+        .then(id => {
+          if(id){
+            return res.send({"message":"Added to database" , "id" : id[0]})
+          }})
+        .catch(err => {
+          res.status(500).send({message: err.message})
+        })
+    })
+})
+
 router.get('/:id', (req,res)=> {
     let id = req.params.id
 

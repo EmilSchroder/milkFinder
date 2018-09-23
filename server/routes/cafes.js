@@ -21,16 +21,23 @@ router.get('/:id/milks', (req,res) => {
 
 router.post('/', (req,res)=>{
   const {cafe_name, latitude, longitude, website} = req.body
-  console.log(req.body);
   
-  db.addCafe(cafe_name, latitude, longitude, website)
-    .then(id => {
-      if(id){
-        return res.send({"message":"Added to database" , "id" : id[0]})
-      }})
-    .catch(err => {
-      res.status(500).send({message: err.message})
-    })
+  db.cafeExists(cafe_name)
+    .then(exists => {
+      if(exists.length>0){
+        return res.status(400).send({message: 'Cafe already registered'})
+      }
+    db.addCafe(cafe_name, latitude, longitude, website)
+      .then(id => {
+        if(id){
+          return res.send({"message":"Added to database" , "id" : id[0]})
+        }})
+      .catch(err => {
+        res.status(500).send({message: err.message})
+      })
+  })
+  
+
       
 })
 

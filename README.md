@@ -60,15 +60,36 @@ Returns the full list of cafes
 }
 
 ```
+### POST /api/cafes
+Adds in a cafe
+### Request
+```
+{
+    "cafe_name" : "Gipsy Kitchen",
+    "latitude" : -41.3248,
+    "longitude" : 174.8214,
+    "website" : "www.facebook.com/Gipsy-Kitchen-166251323428395"
+}
+```
+### Successful Response 
+```
+{
+    "message" : "Added to database",
+    "id" : 4003
+}
+```
+#### Cafe Exists Response
+```
+{
+    "message": "Cafe already registered"
+}
+```
 
 ### GET /api/cafes/:id
 Returns a single cafe
 #### Response
 
-```
-
-
-    
+``` 
 {
     "id" : 4001,
     "cafe_name" : "Milk Crate",
@@ -98,6 +119,31 @@ Returns a full list of milks
 }
 
 ```
+
+### POST /api/milks
+Adds a milk to the milk table
+#### Request
+
+```
+{
+    "milk_type": "Goat"
+}
+```
+#### Successful Response
+```
+{
+    "id" : 2009
+    "milk_type" : "Goat"
+}
+
+```
+#### Milk Exists Response
+```
+{
+    "message" : "Milk already registered"
+}
+```
+
 
 ### GET /api/milks/:id
 Returns a single milk
