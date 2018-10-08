@@ -1,11 +1,14 @@
 const initialState = {
-    activeMilk: ''
+    activeMilk: '',
+    ListOfMilks: []
 }
 
 const milks = (state = initialState, action) =>{
     switch (action.type){
         case 'UPDATE_ACTIVE_MILK':
-         return state.activeMilk: action.milk
+            return {activeMilk : action.milk}
+        default:
+            return state
     }
 }
 

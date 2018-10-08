@@ -1,7 +1,7 @@
 
 import { combineReducers } from "redux"
 
-import milks from './milk.js'
+import milks from './milks.js'
 
 const reducers = combineReducers({
   milks: milks
