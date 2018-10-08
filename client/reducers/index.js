@@ -1,8 +1,10 @@
 
 import { combineReducers } from "redux"
 
+import milks from './milk.js'
+
 const reducers = combineReducers({
-  selectedChord: selectedChord
+  milks: milks
 })
 
 export default reducers

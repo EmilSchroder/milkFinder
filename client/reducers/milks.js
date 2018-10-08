@@ -8,3 +8,5 @@ const milks = (state = initialState, action) =>{
          return state.activeMilk: action.milk
     }
 }
+
+export default milks
