@@ -21,21 +21,13 @@ module.exports = {
       max: 10
     },
     migrations: {
-      tableName: 'knex_migrations'
+      tableName: 'Cafes'
     }
   },
 
   production: {
     client: 'postgresql',
-    connection: {
-      database: 'my_db',
-      user: 'username',
-      password: 'password'
-    }, //Dont forget before deploy connection: DATABASE_URL from heroku
-    pool: {
-      min: 2,
-      max: 10
-    },
+    connection: process.env.DATABASE_URL,
     migrations: {
       tableName: 'knex_migrations'
     }
