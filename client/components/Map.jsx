@@ -1,7 +1,7 @@
 import React from 'react';
 import GoogleMapReact from 'google-map-react';
 
-import { getAllCafes } from '../cafeApi/cafeApi';
+// import { getAllCafes } from '../cafeApi/cafeApi';
 
 import Marker from './Marker';
 import SideInfo from './SideInfo';
@@ -17,24 +17,24 @@ class Map extends React.Component {
       searchedMilk: 'all'
     };
 
-    this.viewAllCafes = this.viewAllCafes.bind(this);
+    // this.viewAllCafes = this.viewAllCafes.bind(this);
     this.showSideInfo = this.showSideInfo.bind(this);
     this.closeSideBar = this.closeSideBar.bind(this);
     this.activateCafe = this.activateCafe.bind(this);
     this.searchMilk = this.searchMilk.bind(this);
   }
 
-  componentDidMount() {
-    this.viewAllCafes();
-  }
+  // componentDidMount() {
+  //   this.viewAllCafes();
+  // }
 
-  viewAllCafes() {
-    getAllCafes().then(res =>
-      this.setState({
-        cafes: res
-      })
-    );
-  }
+  // viewAllCafes() {
+  //   getAllCafes().then(res =>
+  //     this.setState({
+  //       cafes: res
+  //     })
+  //   );
+  // }
 
   searchMilk(milk) {
     this.setState({

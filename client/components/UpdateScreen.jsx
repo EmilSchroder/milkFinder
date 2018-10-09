@@ -1,7 +1,7 @@
 import React from 'react'
 import TitleHead from './TitleHead'
 
-import {addCafe} from '../cafeApi/cafeApi'
+// import {addCafe} from '../cafeApi/cafeApi'
 
 
 
@@ -20,13 +20,13 @@ class UpdateScreen extends React.Component {
                 Ricecheck: false
         }
 
-        this.handleSubmit = this.handleSubmit.bind(this)
+        // this.handleSubmit = this.handleSubmit.bind(this)
         this.handleCheckboxChange = this.handleCheckboxChange.bind(this)
         this.handleTextChange = this.handleTextChange.bind(this)
     }
 
     handleSubmit(e){
-        addCafe(this.state)
+        // addCafe(this.state)
         e.preventDefault()
     }
 

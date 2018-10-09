@@ -1,6 +1,6 @@
 import React from 'react'
 import GoogleMapReact from 'google-map-react'
-import {getOneCafe} from '../cafeApi/cafeApi'
+// import {getOneCafe} from '../cafeApi/cafeApi'
 
 
 
@@ -20,20 +20,20 @@ class Marker extends React.Component {
         this.countMilks = this.countMilks.bind(this)
     }
 
-    componentDidMount(){
-        this.viewCafeMark()
+    // componentDidMount(){
+    //     this.viewCafeMark()
         
-    }
+    // }
 
 
-    viewCafeMark(){
+    // viewCafeMark(){
    
-        getOneCafe(this.props.cafeId)
-        .then(res =>
-            this.setState({
-                cafe: res
-            }))
-    }
+    //     getOneCafe(this.props.cafeId)
+    //     .then(res =>
+    //         this.setState({
+    //             cafe: res
+    //         }))
+    // }
 
     countMilks(){
         let keys = Object.keys(this.state.cafe).filter(milk => this.state.cafe[milk]== 1||0)
