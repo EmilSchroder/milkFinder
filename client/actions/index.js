@@ -1,4 +1,4 @@
-import request from superagent
+import request from 'superagent'
 const baseURL = 'http://localhost:3000/api/'
 
 export const updateActiveMilk = (milko) =>{
@@ -26,9 +26,8 @@ export const setAllMilks = (manyMilks) =>{
 
 export function fetchAllMilks(){
     return dispatch => {
-        return request
-            .get(baseURL+'milks')
-            .then(setAllMilks(res.body))
+        return request.get(baseURL+'milks')
+            .then(res => dispatch(setAllMilks(res.body)))
             .catch(err => {
                 console.log(err)
             })
