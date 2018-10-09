@@ -6,3 +6,10 @@ export const updateActiveMilk = (milko) =>{
         milk: milko
     }
 }
+
+export const updateActiveCafe = (cafeo) =>{
+    return {
+        type: 'UPDATE_ACTIVE_CAFE',
+        cafe: cafeo
+    }
+}
