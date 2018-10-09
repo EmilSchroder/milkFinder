@@ -1,6 +1,6 @@
 const initialState = {
     activeMilk: '',
-    ListOfMilks: []
+    listOfMilks: []
 }
 
 const milks = (state = initialState, action) => {
@@ -8,7 +8,7 @@ const milks = (state = initialState, action) => {
         case 'UPDATE_ACTIVE_MILK':
             return {...state, activeMilk : action.milk}
         case 'SET_ALL_MILKS':
-            return {...state, ListOfMilks: action.allMilks}
+            return {...state, listOfMilks: action.allMilks}
         default:
             return state
     }

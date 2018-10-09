@@ -3,7 +3,7 @@ import GoogleMapReact from 'google-map-react';
 import { connect } from 'react-redux'
 
 // import { getAllCafes } from '../cafeApi/cafeApi';
-import { fetchAllMilks, setAllMilks } from '../actions'
+import { fetchAllMilks, fetchAllCafes } from '../actions'
 
 import Marker from './Marker';
 import SideInfo from './SideInfo';
@@ -29,6 +29,7 @@ class Map extends React.Component {
 
   componentDidMount() {
     this.props.dispatch(fetchAllMilks())  
+    this.props.dispatch(fetchAllCafes())
   }
 
   // viewAllCafes() {
@@ -61,7 +62,6 @@ class Map extends React.Component {
   }
 
   render() {
-    {setAllMilks()}
     return (
       <React.Fragment>
         <Header searchMilk={this.searchMilk} />
@@ -101,12 +101,6 @@ class Map extends React.Component {
   }
 }
 
-function mapDispatchtoProps(dispatch){
-  return bindActionCreators({
-    fetchAllMilks: fetchAllMilks,
-    setAllMilks: setAllMilks
-    },dispatch)
-  }
 
 
-export default connect(mapDispatchtoProps)(Map);
+export default connect()(Map);

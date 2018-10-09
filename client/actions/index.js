@@ -33,3 +33,24 @@ export function fetchAllMilks(){
             })
     }
 }
+//
+
+//Set all cafes pairing
+
+export const setAllCafes = (manyCafes) =>{
+    return {
+        type: 'SET_ALL_CAFES',
+        allCafes: manyCafes
+    }
+}
+
+export function fetchAllCafes(){
+    return dispatch => {
+        return request.get(baseURL+'cafes')
+            .then(res => dispatch(setAllCafes(res.body)))
+            .catch(err => {
+                console.log(err)
+            })
+    }
+}
+//
