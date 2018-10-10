@@ -11,13 +11,13 @@ class SearchFor extends React.Component{
             case 'milk':
                 return (
                     this.props.milks.map(milk => {
-                        return <option value={milk.milk_type}>{milk.milk_type}</option>
+                        return <option key={milk.id} value={milk.milk_type}>{milk.milk_type}</option>
                     })
                 )
             case 'cafe':
                 return (
                     this.props.cafes.map(cafe => {
-                        return <option value={cafe.cafe_name}>{cafe.cafe_name}</option>
+                        return <option key={cafe.id} value={cafe.cafe_name}>{cafe.cafe_name}</option>
                     })
                 )
             default:

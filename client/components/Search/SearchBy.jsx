@@ -29,7 +29,7 @@ class SearchBy extends React.Component{
         <React.Fragment>
             <form>
                 <select onChange={(e) => this.updateSearch(e)}>
-                    <option defaultValue disabled>Search by...</option>
+                    <option defaultValue>Search by...</option>
                     <option value="milk">Milk</option>
                     <option value="cafe">Cafe</option>
                 </select>
