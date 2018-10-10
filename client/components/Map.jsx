@@ -7,8 +7,7 @@ import { fetchAllMilks, fetchAllCafes } from '../actions'
 
 import Marker from './Marker';
 import SideInfo from './SideInfo';
-import Header from './Header';
-import { bindActionCreators } from 'redux';
+import Search from './Search'
 
 class Map extends React.Component {
   constructor(props) {
@@ -64,7 +63,7 @@ class Map extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Header searchMilk={this.searchMilk} />
+        <Search />
         <div id="map" style={{ height: '82vh', width: '100%' }}>
           <SideInfo
             closeSideBar={this.closeSideBar}
