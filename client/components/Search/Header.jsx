@@ -1,5 +1,7 @@
 import React from 'react'
-import TitleHead from './TitleHead'
+import { connect } from 'react-redux'
+
+import Searchby from './SearchBy'
 
 class Header extends React.Component {
   constructor(props){
@@ -24,23 +26,11 @@ class Header extends React.Component {
   
   render(){
   return (
-    <div className='header'>
-        <TitleHead />
         <div className='flex'>
-          <select name="milk"
-                onChange={(e) => {
-                  this.searchTerm(e.target.value)}}>
-            <option value="all">All</option>
-            <option value="cow">Cow</option>
-            <option value="soy">Soy</option>
-            <option value="coconut">Coconut</option>
-            <option value="almond">Almond</option>
-            <option value="rice">Rice</option>
-          </select>
+          <Searchby />
           <button onClick={()=>this.props.searchMilk(this.state.search)}>Search Milk</button>
                   <a href='#/addCafe'>add a cafe</a>
         </div>
-    </div>
 
         /* <input  type='text' 
                 name='search' 
@@ -58,4 +48,4 @@ class Header extends React.Component {
 
 
 
-export default Header
+export default connect()(Header)

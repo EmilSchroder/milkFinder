@@ -97,5 +97,10 @@ body{
     align-content: center;
     justify-content: center;
     height: 37%;
-    background-color: grey
+    background-color: rgb(190, 186, 186)
+}
+
+select{
+    border-radius: 5%;
+    width: 20%;
 }

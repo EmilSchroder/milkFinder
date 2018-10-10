@@ -1,6 +1,6 @@
 import React from 'react'
 import GoogleMapReact from 'google-map-react'
-import {getOneCafe} from '../cafeApi/cafeApi'
+// import {getOneCafe} from '../cafeApi/cafeApi'
 
 
 
