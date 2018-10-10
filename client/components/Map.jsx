@@ -1,11 +1,13 @@
 import React from 'react';
 import GoogleMapReact from 'google-map-react';
+import { connect } from 'react-redux'
 
-import { getAllCafes } from '../cafeApi/cafeApi';
+// import { getAllCafes } from '../cafeApi/cafeApi';
+import { fetchAllMilks, fetchAllCafes } from '../actions'
 
 import Marker from './Marker';
 import SideInfo from './SideInfo';
-import Header from './Header';
+import Search from './Search'
 
 class Map extends React.Component {
   constructor(props) {
@@ -17,7 +19,7 @@ class Map extends React.Component {
       searchedMilk: 'all'
     };
 
-    this.viewAllCafes = this.viewAllCafes.bind(this);
+    // this.viewAllCafes = this.viewAllCafes.bind(this);
     this.showSideInfo = this.showSideInfo.bind(this);
     this.closeSideBar = this.closeSideBar.bind(this);
     this.activateCafe = this.activateCafe.bind(this);
@@ -25,16 +27,17 @@ class Map extends React.Component {
   }
 
   componentDidMount() {
-    this.viewAllCafes();
+    this.props.dispatch(fetchAllMilks())  
+    this.props.dispatch(fetchAllCafes())
   }
 
-  viewAllCafes() {
-    getAllCafes().then(res =>
-      this.setState({
-        cafes: res
-      })
-    );
-  }
+  // viewAllCafes() {
+  //   getAllCafes().then(res =>
+  //     this.setState({
+  //       cafes: res
+  //     })
+  //   );
+  // }
 
   searchMilk(milk) {
     this.setState({
@@ -60,7 +63,7 @@ class Map extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Header searchMilk={this.searchMilk} />
+        <Search />
         <div id="map" style={{ height: '82vh', width: '100%' }}>
           <SideInfo
             closeSideBar={this.closeSideBar}
@@ -97,4 +100,6 @@ class Map extends React.Component {
   }
 }
 
-export default Map;
+
+
+export default connect()(Map);
