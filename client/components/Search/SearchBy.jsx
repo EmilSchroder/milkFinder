@@ -27,14 +27,14 @@ class SearchBy extends React.Component{
     render(){
     return(
         <React.Fragment>
-            <form>
+
                 <select onChange={(e) => this.updateSearch(e)}>
                     <option defaultValue>Search by...</option>
                     <option value="milk">Milk</option>
                     <option value="cafe">Cafe</option>
                 </select>
-            </form>
             <SearchFor type={this.state.activeSearch} />
+            
         </React.Fragment>
         )  
     }      

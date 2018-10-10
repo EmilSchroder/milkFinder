@@ -21,17 +21,15 @@ class SearchFor extends React.Component{
                     })
                 )
             default:
-                return <option>Select Search Term</option>
+                return <option></option>
         }
     }
 
     render(){
         return(
-            <form>
                 <select>
                     {this.grabList(this.props.type)}
                 </select>
-            </form>
         )
     }
 }
