@@ -27,9 +27,12 @@ class SearchFor extends React.Component{
 
     render(){
         return(
+            <React.Fragment>
                 <select>
                     {this.grabList(this.props.type)}
                 </select>
+                <button onClick={()=>updateD}>Search</button>
+            </React.Fragment>
         )
     }
 }

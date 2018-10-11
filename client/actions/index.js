@@ -15,6 +15,13 @@ export const updateActiveCafe = (cafeo) =>{
     }
 }
 
+export const updateDisplayedCafes = (selectedCafes) =>{
+    return {
+        type: 'UPDATE_DISPLAYED_CAFES',
+        cafes: selectedCafes
+    }
+}
+
 //Set all milks pairing
 
 export const setAllMilks = (manyMilks) =>{

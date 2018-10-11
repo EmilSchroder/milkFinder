@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import {Link} from 'react-router-dom'
 
 import Searchby from './SearchBy'
 
@@ -26,20 +27,11 @@ class Header extends React.Component {
   
   render(){
   return (
+
         <div className='flex'>
           <Searchby />
-          <button onClick={()=>this.props.searchMilk(this.state.search)}>Search Milk</button>
-                  <a href='#/addCafe'>add a cafe</a>
+          {/* there will need to be a linking button here at a later date */}
         </div>
-
-        /* <input  type='text' 
-                name='search' 
-                placeholder='cafe or milk'
-                onChange={(e) => {
-                  this.searchTerm(e.target.value)}}/> */
-
-        /* <button type='button'>Search Cafe</button>
-        <button type='button' onClick={()=>this.props.searchMilk(this.state.search)}>Search Milk</button> */
 
   )
 
