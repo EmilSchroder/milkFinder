@@ -10,8 +10,8 @@ const cafes = (state = initialState, action) => {
             return {...state, activeCafe: action.cafe}
         case 'SET_ALL_CAFES':
             return {...state, listOfCafes: action.allCafes}
-        case 'UPDATE_SELECTED_CAFES':
-            return {...state, currentDisplayedCafes: action.cafes}
+        case 'UPDATE_DISPLAYED_CAFES':
+            return {...state, currentDisplayedCafes: [...action.cafes]}
         default: 
             return state
         }

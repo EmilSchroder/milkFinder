@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux';
-import { getRelevantCafes } from '../../actions';
+import { fetchRelevantCafesByMilk, fetchRelevantCafes } from '../../actions';
 
 class SearchFor extends React.Component{
     constructor(props){
@@ -11,6 +11,7 @@ class SearchFor extends React.Component{
         }
         this.grabList = this.grabList.bind(this)
         this.register = this.register.bind(this)
+        this.getRelevantCafes = this.getRelevantCafes.bind(this)
     }
 
     register(e){
@@ -39,15 +40,22 @@ class SearchFor extends React.Component{
         }
     }
 
+    getRelevantCafes(criteria, data){
+        if(criteria == 'milk'){
+            this.props.dispatch(fetchRelevantCafesByMilk(data))
+        } else if(criteria == 'cafe'){
+            this.props.dispatch(fetchRelevantCafes(data))
+        }
+    }
+
     render(){
-            console.log(this.state)
         return(
             <React.Fragment>
                 <select onChange={(e)=> this.register(e)}>
                     <option></option>
                     {this.grabList(this.props.type)}
                 </select>
-                <button onClick={()=>getRelevantCafes(this.props.type, this.state.data)}>Search</button>
+                <button onClick={()=>this.getRelevantCafes(this.props.type, this.state.data)}>Search</button>
             </React.Fragment>
         )
     }
