@@ -22,6 +22,20 @@ export const updateDisplayedCafes = (selectedCafes) =>{
     }
 }
 
+export function getRelevantCafes(criteria, data){
+    if(criteria == 'milk'){
+        fetchRelevantCafesByMilk(data)
+    } else if(criteria == 'cafe'){
+        updateDisplayedCafes(data)
+    }
+}
+
+export function fetchRelevantCafesByMilk(id){
+    return dispatch => {
+        return request.get(baseURL+`milk/${id}/cafes`)
+    }
+}
+
 //Set all milks pairing
 
 export const setAllMilks = (manyMilks) =>{
