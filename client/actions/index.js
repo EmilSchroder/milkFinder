@@ -16,10 +16,21 @@ export const updateActiveCafe = (cafeo) =>{
 }
 
 export const updateDisplayedCafes = (selectedCafes) =>{
-    console.log(selectedCafes, 'woop')
     return {
         type: 'UPDATE_DISPLAYED_CAFES',
         cafes: selectedCafes
+    }
+}
+
+export function displayAllCafes(){
+    return dispatch => {
+        return request.get(baseURL+`cafes`)
+            .then(res => {
+                dispatch(updateDisplayedCafes(res.body))
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }
 }
 

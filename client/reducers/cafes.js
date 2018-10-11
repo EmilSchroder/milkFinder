@@ -1,5 +1,5 @@
 const initialState = {
-    activeCafe : '',
+    activeCafe : {},
     currentDisplayedCafes: [],
     listOfCafes:[]
 }
