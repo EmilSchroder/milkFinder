@@ -159,7 +159,7 @@ Returns a single milk
 
 ```
 
-### GET /api/milk/:id/cafes
+### GET /api/milks/:id/cafes
 Retrieves the array of cafes that serve a certain milk
 #### Response
 

@@ -15,6 +15,39 @@ export const updateActiveCafe = (cafeo) =>{
     }
 }
 
+export const updateDisplayedCafes = (selectedCafes) =>{
+    console.log(selectedCafes, 'woop')
+    return {
+        type: 'UPDATE_DISPLAYED_CAFES',
+        cafes: selectedCafes
+    }
+}
+
+
+
+export function fetchRelevantCafesByMilk(id){
+    
+    return dispatch => {
+        return request.get(baseURL+`milks/${id}/cafes`)
+            .then(res => {
+                dispatch(updateDisplayedCafes(res.body)
+            )})
+            .catch(err => {
+                console.log(err)
+            })
+    }
+}
+
+export function fetchRelevantCafes(id){
+    return dispatch => {
+        return request.get(baseURL+`cafes/${id}`)
+        .then(res => dispatch(updateDisplayedCafes([res.body])))
+        .catch(err => {
+            console.log(err)
+        })
+    }
+}
+
 //Set all milks pairing
 
 export const setAllMilks = (manyMilks) =>{
