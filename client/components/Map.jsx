@@ -3,7 +3,7 @@ import GoogleMapReact from 'google-map-react';
 import { connect } from 'react-redux'
 
 // import { getAllCafes } from '../cafeApi/cafeApi';
-import { fetchAllMilks, fetchAllCafes, displayAllCafes } from '../actions'
+import { fetchAllMilks, fetchAllCafes, displayAllCafes, findActiveCafe } from '../actions'
 
 import Marker from './Marker';
 import SideInfo from './SideInfo';
@@ -92,6 +92,7 @@ class Map extends React.Component {
                     name={cafe.name}
                     cafeId={cafe.id}
                     showSideInfo={this.showSideInfo}
+                    
                   />
                 );
               }
@@ -106,7 +107,7 @@ class Map extends React.Component {
 function mapStateToProps(state){
   return {
       displayedCafes: state.cafes.currentDisplayedCafes,
-      activeCafes: state.cafes.activeCafe
+      activeCafe: state.cafes.activeCafe
   }
 }
 

@@ -1,8 +1,10 @@
 import React from 'react'
-import GoogleMapReact from 'google-map-react'
 import request from 'superagent'
+
 const baseURL = 'http://localhost:3000/api/'
-// import {getOneCafe} from '../cafeApi/cafeApi'
+import {connect} from 'react-redux'
+import { updateActiveCafe } from '../actions'
+
 
 
 
@@ -15,7 +17,7 @@ class Marker extends React.Component {
             numOfMilks: 0
         }
 
-        
+        this.findActiveCafe = this.findActiveCafe.bind(this)
         this.getNumOfMilks = this.getNumOfMilks.bind(this)
         this.selectIcon = this.selectIcon.bind(this)
     }
@@ -26,7 +28,6 @@ class Marker extends React.Component {
     }
 
     selectIcon(){
-        console.log(this.state.numOfMilks,'yeehaw')
                 switch(this.state.numOfMilks){
                     case 1:
                     
@@ -49,12 +50,22 @@ class Marker extends React.Component {
     getNumOfMilks(id){
         return request.get(baseURL+`cafes/${id}/milks`)
         .then(res => {
-            console.log(res.body)
             this.setState({
                 numOfMilks: res.body.length-1
             })
         })
     }
+
+    findActiveCafe(id){
+            return request.get(baseURL+`cafes/${id}`)
+            .then(res => {
+                this.props.dispatch(updateActiveCafe(res.body))
+            })
+            .catch(err => {
+                console.log(err)
+            })
+        }
+    
 
     render(){
         return(
@@ -66,7 +77,10 @@ class Marker extends React.Component {
                 display: 'inline-flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-            }} onClick={() => this.props.showSideInfo()} />
+            }} onClick={() => {
+                this.props.showSideInfo();
+                this.findActiveCafe(this.props.cafeId)
+                }} />
             <figcaption className='tooltiptext'>{this.props.name}</figcaption>
             </figure>
               </React.Fragment>   
@@ -74,4 +88,11 @@ class Marker extends React.Component {
         )
     }
 }
-export default Marker
+
+function mapStateToProps(state){
+    return{
+        activeCafe: state.cafes.activeCafe
+    }
+}
+
+export default connect(mapStateToProps)(Marker)
