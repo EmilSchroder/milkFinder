@@ -3,7 +3,7 @@ import GoogleMapReact from 'google-map-react';
 import { connect } from 'react-redux'
 
 // import { getAllCafes } from '../cafeApi/cafeApi';
-import { fetchAllMilks, fetchAllCafes } from '../actions'
+import { fetchAllMilks, fetchAllCafes, displayAllCafes, findActiveCafe } from '../actions'
 
 import Marker from './Marker';
 import SideInfo from './SideInfo';
@@ -13,47 +13,22 @@ class Map extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      cafes: [],
-      activeCafe: {},
-      searchedMilk: 'all'
-    };
 
-    // this.viewAllCafes = this.viewAllCafes.bind(this);
     this.showSideInfo = this.showSideInfo.bind(this);
     this.closeSideBar = this.closeSideBar.bind(this);
-    this.activateCafe = this.activateCafe.bind(this);
-    this.searchMilk = this.searchMilk.bind(this);
+
   }
 
   componentDidMount() {
     this.props.dispatch(fetchAllMilks())  
     this.props.dispatch(fetchAllCafes())
+    this.props.dispatch(displayAllCafes())
   }
 
-  // viewAllCafes() {
-  //   getAllCafes().then(res =>
-  //     this.setState({
-  //       cafes: res
-  //     })
-  //   );
-  // }
-
-  searchMilk(milk) {
-    this.setState({
-      searchedMilk: milk
-    });
-  }
 
   showSideInfo(info) {
     document.getElementById('sideInfo').style.width = '300px';
-    this.activateCafe(info);
-  }
 
-  activateCafe(cafe) {
-    this.setState({
-      activeCafe: cafe
-    });
   }
 
   closeSideBar() {
@@ -67,7 +42,7 @@ class Map extends React.Component {
         <div id="map" style={{ height: '82vh', width: '100%' }}>
           <SideInfo
             closeSideBar={this.closeSideBar}
-            activeCafe={this.state.activeCafe}
+            activeCafe={this.props.activeCafe}
           />
           <GoogleMapReact
             bootstrapURLKeys={{
@@ -77,21 +52,21 @@ class Map extends React.Component {
             defaultZoom={9}
             onClick={() => this.closeSideBar()}
           >
-            {this.state.cafes.map(cafes => {
-              if (
-                this.state.searchedMilk == 'all' ||
-                cafes[this.state.searchedMilk] == 1
-              ) {
+            {this.props.displayedCafes.map(cafe => {
+
                 return (
                   <Marker
-                    key={cafes.id}
-                    lat={cafes.latitude}
-                    lng={cafes.longitude}
-                    cafeId={cafes.id}
+                    key={cafe.cafe_id || cafe.id}
+                    lat={cafe.latitude}
+                    lng={cafe.longitude}
+                    website={cafe.website}
+                    name={cafe.cafe_name || cafe.name}
+                    cafeId={cafe.cafe_id || cafe.id}
                     showSideInfo={this.showSideInfo}
+                    
                   />
                 );
-              }
+              
             })}
           </GoogleMapReact>
         </div>
@@ -100,6 +75,11 @@ class Map extends React.Component {
   }
 }
 
+function mapStateToProps(state){
+  return {
+      displayedCafes: state.cafes.currentDisplayedCafes,
+      activeCafe: state.cafes.activeCafe
+  }
+}
 
-
-export default connect()(Map);
+export default connect(mapStateToProps)(Map);

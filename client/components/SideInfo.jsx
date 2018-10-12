@@ -1,6 +1,8 @@
 import React from 'react'
-import GoogleMapReact from 'google-map-react'
-// import {getOneCafe} from '../cafeApi/cafeApi'
+import { connect } from 'react-redux'
+import request from 'superagent'
+
+const baseURL = 'http://localhost:3000/api/'
 
 
 
@@ -10,42 +12,62 @@ class SideInfo extends React.Component {
     
         
         this.state = {
-            cafe: {}
+            cafe: {},
+            milks: []
         }
         
         
     }
 
-    componentDidUpdate(prevProps){
-        if (this.props.activeCafe!=prevProps.activeCafe){
+    // componentDidUpdate(prevProps){
+    //     if (this.props.activeCafe!=prevProps.activeCafe){
 
-            this.setState({
-                cafe: this.props.activeCafe
-            })
+    //         this.setState({
+    //             cafe: this.props.activeCafe
+    //         })
             
+    //     }
+    // }
+
+    componentDidUpdate(prevProps){
+        request.get(baseURL+`cafes/${this.props.activeCafe.id}/milks`)
+        .then(res => {
+            console.log(res.body,'milks')
+            if(this.props.activeCafe!=prevProps.activeCafe){
+            this.setState({
+                cafe: this.props.activeCafe,
+                milks: res.body
+            })
         }
+        })
+        .catch(err => {
+            console.log(err)
+        })
     }
 
 
     render(){
+        console.log(this.state.milks)
         return(
             <div id='sideInfo' className='sidenav'>
                 <button className='close' onClick={()=>this.props.closeSideBar()}>&times;</button>
                 <div id='sideBarDeets'>
                    
-                    <h1>{this.state.cafe.cafe!=undefined ? this.state.cafe.cafe:""}</h1>
-                    <p>{this.state.cafe.cow!=undefined ? (this.state.cafe.cow ? "Cow" : "") : ""}</p>
-                    <p>{this.state.cafe.soy!=undefined ? (this.state.cafe.soy ? "Soy" : "") : ""}</p>
-                    <p>{this.state.cafe.almond!=undefined ? (this.state.cafe.almond ? "Almond" : "") : ""}</p>
-                    <p>{this.state.cafe.coconut!=undefined ? (this.state.cafe.coconut ? "Coconut" : "") : ""}</p>
+                    <h1>{this.state.cafe['cafe_name' || 'name']}</h1>
+                    {this.state.milks.map(milk => {
+                        return <p>{milk.milk_type}</p>
+                    })}
 
-                    
-                    <p>{this.state.cafe.rice!=undefined ? (this.state.cafe.rice ? "Rice" : "") : ""}</p>
                 </div>
-                
             </div>
         )
     }
 }
 
-export default SideInfo
+function mapStateToProps(state){
+    return {
+        activeCafe: state.cafes.activeCafe
+    }
+}
+
+export default connect(mapStateToProps)(SideInfo)

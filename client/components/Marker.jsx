@@ -1,6 +1,10 @@
 import React from 'react'
-import GoogleMapReact from 'google-map-react'
-// import {getOneCafe} from '../cafeApi/cafeApi'
+import request from 'superagent'
+
+const baseURL = 'http://localhost:3000/api/'
+import {connect} from 'react-redux'
+import { updateActiveCafe } from '../actions'
+
 
 
 
@@ -9,55 +13,86 @@ class Marker extends React.Component {
     constructor(props){
         super(props)
     
-            
         this.state = {
-            cafe: {}
+            numOfMilks: 0
         }
 
-        
-
-        this.viewCafeMark = this.viewCafeMark.bind(this)
-        this.countMilks = this.countMilks.bind(this)
+        this.findActiveCafe = this.findActiveCafe.bind(this)
+        this.getNumOfMilks = this.getNumOfMilks.bind(this)
+        this.selectIcon = this.selectIcon.bind(this)
     }
 
-    // componentDidMount(){
-    //     this.viewCafeMark()
-        
-    // }
-
-
-    // viewCafeMark(){
-   
-    //     getOneCafe(this.props.cafeId)
-    //     .then(res =>
-    //         this.setState({
-    //             cafe: res
-    //         }))
-    // }
-
-    countMilks(){
-        let keys = Object.keys(this.state.cafe).filter(milk => this.state.cafe[milk]== 1||0)
-
-        return keys.length
+    componentDidMount(){
+        this.getNumOfMilks(this.props.cafeId)
         
     }
 
+    selectIcon(){
+                switch(this.state.numOfMilks){
+                    case 1:
+                    
+                        return './images/onemilk.png'
+                    case 2:
+                    
+                        return './images/twomilk.png'
+                    case 3:
+                    
+                        return './images/threemilk.png'
+                    case 4:
+                    
+                        return './images/fourmilk.png'
+                    default:
+                    
+                        return ''
+                }
+    }
+
+    getNumOfMilks(id){
+        return request.get(baseURL+`cafes/${id}/milks`)
+        .then(res => {
+            this.setState({
+                numOfMilks: res.body.length-1
+            })
+        })
+    }
+
+    findActiveCafe(id){
+            return request.get(baseURL+`cafes/${id}`)
+            .then(res => {
+                this.props.dispatch(updateActiveCafe(res.body))
+            })
+            .catch(err => {
+                console.log(err)
+            })
+        }
+    
 
     render(){
         return(
             <React.Fragment>
 
             <figure className='icon'>
-            <img src={this.countMilks() > 4 ? './images/fourmilk.png' : (this.countMilks() > 3 ? './images/threemilk.png' : (this.countMilks() > 2 ? './images/twomilk.png': './images/onemilk.png'))} style={{
+            <img src={this.selectIcon()} 
+                style={{
                 display: 'inline-flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-            }} onClick={() => this.props.showSideInfo(this.state.cafe)} />
-            <figcaption className='tooltiptext'>{this.state.cafe.cafe}</figcaption>
+            }} onClick={() => {
+                this.props.showSideInfo();
+                this.findActiveCafe(this.props.cafeId)
+                }} />
+            <figcaption className='tooltiptext'>{this.props.name}</figcaption>
             </figure>
               </React.Fragment>   
 
         )
     }
 }
-export default Marker
+
+function mapStateToProps(state){
+    return{
+        activeCafe: state.cafes.activeCafe
+    }
+}
+
+export default connect(mapStateToProps)(Marker)
