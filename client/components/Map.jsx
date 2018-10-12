@@ -13,17 +13,10 @@ class Map extends React.Component {
   constructor(props) {
     super(props);
 
-    // this.state = {
-    //   cafes: [],
-    //   activeCafe: {},
-    //   searchedMilk: 'all'
-    // };
 
-    // this.viewAllCafes = this.viewAllCafes.bind(this);
     this.showSideInfo = this.showSideInfo.bind(this);
     this.closeSideBar = this.closeSideBar.bind(this);
-    // this.activateCafe = this.activateCafe.bind(this);
-    // this.searchMilk = this.searchMilk.bind(this);
+
   }
 
   componentDidMount() {
@@ -32,30 +25,11 @@ class Map extends React.Component {
     this.props.dispatch(displayAllCafes())
   }
 
-  // viewAllCafes() {
-  //   getAllCafes().then(res =>
-  //     this.setState({
-  //       cafes: res
-  //     })
-  //   );
-  // }
-
-  // searchMilk(milk) {
-  //   this.setState({
-  //     searchedMilk: milk
-  //   });
-  // }
 
   showSideInfo(info) {
     document.getElementById('sideInfo').style.width = '300px';
-    // this.activateCafe(info);
-  }
 
-  // activateCafe(cafe) {
-  //   this.setState({
-  //     activeCafe: cafe
-  //   });
-  // }
+  }
 
   closeSideBar() {
     document.getElementById('sideInfo').style.width = '0';
@@ -79,10 +53,7 @@ class Map extends React.Component {
             onClick={() => this.closeSideBar()}
           >
             {this.props.displayedCafes.map(cafe => {
-              // if (
-              //   this.state.searchedMilk == 'all' ||
-              //   cafe[this.state.searchedMilk] == 1
-             {
+
                 return (
                   <Marker
                     key={cafe.cafe_id || cafe.id}
@@ -95,7 +66,7 @@ class Map extends React.Component {
                     
                   />
                 );
-              }
+              
             })}
           </GoogleMapReact>
         </div>
