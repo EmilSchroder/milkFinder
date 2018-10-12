@@ -16,8 +16,6 @@ export const updateActiveCafe = (cafeo) =>{
 }
 
 
-
-
 export const updateDisplayedCafes = (selectedCafes) =>{
     return {
         type: 'UPDATE_DISPLAYED_CAFES',

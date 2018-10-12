@@ -85,12 +85,12 @@ class Map extends React.Component {
              {
                 return (
                   <Marker
-                    key={cafe.id}
+                    key={cafe.cafe_id || cafe.id}
                     lat={cafe.latitude}
                     lng={cafe.longitude}
                     website={cafe.website}
-                    name={cafe.name}
-                    cafeId={cafe.id}
+                    name={cafe.cafe_name || cafe.name}
+                    cafeId={cafe.cafe_id || cafe.id}
                     showSideInfo={this.showSideInfo}
                     
                   />
