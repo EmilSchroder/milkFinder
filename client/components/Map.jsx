@@ -48,7 +48,7 @@ class Map extends React.Component {
 
   showSideInfo(info) {
     document.getElementById('sideInfo').style.width = '300px';
-    this.activateCafe(info);
+    // this.activateCafe(info);
   }
 
   // activateCafe(cafe) {
@@ -78,18 +78,20 @@ class Map extends React.Component {
             defaultZoom={9}
             onClick={() => this.closeSideBar()}
           >
-            {this.props.displayedCafes.map(cafes => {
+            {this.props.displayedCafes.map(cafe => {
               // if (
               //   this.state.searchedMilk == 'all' ||
-              //   cafes[this.state.searchedMilk] == 1
+              //   cafe[this.state.searchedMilk] == 1
              {
                 return (
                   <Marker
-                    key={cafes.id}
-                    lat={cafes.latitude}
-                    lng={cafes.longitude}
-                    cafeId={cafes.id}
-                    // showSideInfo={this.showSideInfo}
+                    key={cafe.id}
+                    lat={cafe.latitude}
+                    lng={cafe.longitude}
+                    website={cafe.website}
+                    name={cafe.name}
+                    cafeId={cafe.id}
+                    showSideInfo={this.showSideInfo}
                   />
                 );
               }
