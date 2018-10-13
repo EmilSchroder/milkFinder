@@ -63,19 +63,23 @@ class UpdateScreen extends React.Component {
                 <div className='formwrapper'>
                     <form onSubmit={this.handleSubmit}>
                         <h1>Add a Cafe</h1>
-                        <input type='text' autocomplete="off" placeholder='Cafe Name' name='cafename' onChange={this.handleTextChange} />
-                        <input type='text' autocomplete="off" placeholder='Latitude' name='lat' onChange={this.handleTextChange} />
-                        <input type='text' autocomplete="off" placeholder='Longitude' name='lon' onChange={this.handleTextChange} />
+
+                        <input type='text' autoComplete="off" placeholder='Cafe Name' name='cafename' onChange={this.handleTextChange} />
+                        <input type='text' autoComplete="off" placeholder='Latitude' name='lat' onChange={this.handleTextChange} />
+                        <input type='text' autoComplete="off" placeholder='Longitude' name='lon' onChange={this.handleTextChange} />
+                        <input type='text' autoComplete="off" placeholder='Website' name='web' onChange={this.handleTextChange} />
+                        
                         <div className='addMilks'>
                             {this.props.allMilks.map(milk => {
                                 return(
-                                    <label>
-                                        <input type='checkbox' value={milk.milk_type} />
+                                    <label key={milk.id}>
+                                        <input  type='checkbox' value={milk.milk_type} />
                                         {milk.milk_type}
                                     </label>
                                 )
                             })}
                         </div>
+                        <input type='submit' />
                     </form>
                 </div>
             </div>

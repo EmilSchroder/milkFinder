@@ -63,7 +63,6 @@ export function fetchRelevantCafes(id){
 //Set all milks pairing
 
 export const setAllMilks = (manyMilks) =>{
-    console.log('data', manyMilks)
     return {
         type: 'SET_ALL_MILKS',
         allMilks: manyMilks
