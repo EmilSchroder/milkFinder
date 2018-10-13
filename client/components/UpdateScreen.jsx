@@ -9,16 +9,16 @@ class UpdateScreen extends React.Component {
     constructor(props){
         super(props)
 
-        this.state = {
-                cafename:'',
-                lat:'',
-                lon:'',
-                Cowcheck: false,
-                Soycheck: false,
-                Almondcheck: false,
-                Coconutcheck: false,
-                Ricecheck: false
-        }
+        // this.state = {
+        //         cafename:'',
+        //         lat:'',
+        //         lon:'',
+        //         Cowcheck: false,
+        //         Soycheck: false,
+        //         Almondcheck: false,
+        //         Coconutcheck: false,
+        //         Ricecheck: false
+        // }
 
         // this.handleSubmit = this.handleSubmit.bind(this)
         this.handleCheckboxChange = this.handleCheckboxChange.bind(this)

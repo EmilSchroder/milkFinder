@@ -19,15 +19,6 @@ class SideInfo extends React.Component {
         
     }
 
-    // componentDidUpdate(prevProps){
-    //     if (this.props.activeCafe!=prevProps.activeCafe){
-
-    //         this.setState({
-    //             cafe: this.props.activeCafe
-    //         })
-            
-    //     }
-    // }
 
     componentDidUpdate(prevProps){
         request.get(baseURL+`cafes/${this.props.activeCafe.id}/milks`)
