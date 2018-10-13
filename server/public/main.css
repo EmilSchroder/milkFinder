@@ -104,3 +104,21 @@ select{
     border-radius: 5%;
     width: 20%;
 }
+
+.formwrapper{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+form{
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.addMilks{
+    display: flex;
+    flex-direction: column;
+}
