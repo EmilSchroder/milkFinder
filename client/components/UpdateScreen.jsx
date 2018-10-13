@@ -1,5 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import request from 'superagent'
+import {Link} from 'react-router-dom'
+
+const baseURL = 'http://localhost:3000/api/'
 
 import TitleHead from './TitleHead'
 import { fetchAllMilks} from '../actions'
@@ -11,20 +15,12 @@ import { fetchAllMilks} from '../actions'
 class UpdateScreen extends React.Component {
     constructor(props){
         super(props)
+        console.log('props', this.props)
+        this.state={}
 
-        // this.state = {
-        //         cafename:'',
-        //         lat:'',
-        //         lon:'',
-        //         Cowcheck: false,
-        //         Soycheck: false,
-        //         Almondcheck: false,
-        //         Coconutcheck: false,
-        //         Ricecheck: false
-        // }
-
-        // this.handleSubmit = this.handleSubmit.bind(this)
-        this.handleCheckboxChange = this.handleCheckboxChange.bind(this)
+        // this.handleCheckboxChange = this.handleCheckboxChange.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
+        this.postCafe = this.postCafe.bind(this)
         this.handleTextChange = this.handleTextChange.bind(this)
     }
 
@@ -33,24 +29,36 @@ class UpdateScreen extends React.Component {
     }
 
     handleSubmit(e){
-        // addCafe(this.state)
         e.preventDefault()
+        console.log('this is the state', this.state)
+        this.postCafe(this.state.cafename, this.state.lat, this.state.lon, this.state.web)
     }
 
-    handleCheckboxChange(e){
-        let key = e.target.name
-        this.setState(prevState => ({
-            [key]: !prevState[key]
-        }))
-    }
+    // handleCheckboxChange(e){
+    //     let key = e.target.name
+    //     this.setState(prevState => ({
+    //         [key]: !prevState[key]
+    //     }))
+    // }
 
     handleTextChange(e){
+        console.log(e.target.value)
         let key = e.target.name
         let value = e.target.value
         this.setState({
             [key]: value
         })
     }    
+
+    postCafe(name, lat, long, website){
+        return request.post(baseURL+`cafes`, {
+                cafe_name: name,
+                latitude: lat,
+                longitude: long,
+                website: website
+            }).then(res => alert(res.text))
+                .catch(err=> err.status==400 ? alert('cafe already exists') : alert(err))
+    }
         
     
 
