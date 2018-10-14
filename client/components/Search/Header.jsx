@@ -30,7 +30,7 @@ class Header extends React.Component {
 
         <div className='flex'>
           <Searchby />
-          {/* there will need to be a linking button here at a later date */}
+          <Link to='/addCafe'><button>Add a Cafe</button></Link>
         </div>
 
   )
