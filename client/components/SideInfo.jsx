@@ -23,7 +23,7 @@ class SideInfo extends React.Component {
     componentDidUpdate(prevProps){
         request.get(baseURL+`cafes/${this.props.activeCafe.id}/milks`)
         .then(res => {
-            console.log(res.body,'milks')
+            // console.log(res.body,'milks')
             if(this.props.activeCafe!=prevProps.activeCafe){
             this.setState({
                 cafe: this.props.activeCafe,
@@ -38,7 +38,7 @@ class SideInfo extends React.Component {
 
 
     render(){
-        console.log(this.state.milks)
+        // console.log(this.state.milks)
         return(
             <div id='sideInfo' className='sidenav'>
                 <button className='close' onClick={()=>this.props.closeSideBar()}>&times;</button>

@@ -218,3 +218,46 @@ Retrieves the array of milks that are served at a certain cafe
 
 
 ```
+### GET /api/cafesandmilks
+Retrieves the data from the Cafes_and_Milks table
+#### Response
+
+```
+
+[
+    {
+        "id": 8001,
+        "cafe_id": 4001,
+        "milk_id": 2001
+    },
+    {
+        "id": 8002,
+        "cafe_id": 4001,
+        "milk_id": 2002
+    },
+    {
+        "id": 8003,
+        "cafe_id": 4001,
+        "milk_id": 2003
+    ...
+    }
+]
+
+```
+### POST /api/cafesandmilks
+Adds a milk to the milk table
+#### Request
+
+```
+{
+    "cafeId" : 4003,
+	"milkArr": [2001, 2002, 2003]
+}
+```
+#### Successful Response
+```
+[
+    8016
+]
+
+```

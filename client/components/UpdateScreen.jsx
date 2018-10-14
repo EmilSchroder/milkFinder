@@ -30,8 +30,10 @@ class UpdateScreen extends React.Component {
 
     handleSubmit(e){
         e.preventDefault()
-        console.log('this is the state', this.state)
         this.postCafe(this.state.cafename, this.state.lat, this.state.lon, this.state.web)
+            .then(res => {
+                postCafesAndMilks(res.id, this.state.milks)
+            })
     }
 
     // handleCheckboxChange(e){
@@ -50,14 +52,17 @@ class UpdateScreen extends React.Component {
         })
     }    
 
+    postCafesAndMilks(cafeId, milkIdArray){
+        ///put call in here
+    }
+
     postCafe(name, lat, long, website){
         return request.post(baseURL+`cafes`, {
                 cafe_name: name,
                 latitude: lat,
                 longitude: long,
                 website: website
-            }).then(res => alert(res.text))
-                .catch(err=> err.status==400 ? alert('cafe already exists') : alert(err))
+            }).catch(err=> err.status==400 ? alert('cafe already exists') : alert(err))
     }
         
     

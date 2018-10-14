@@ -82,6 +82,22 @@ function getMilksByCafe(cafeId, testConn){
     .where('Cafes_and_Milks.cafe_id', cafeId)
 }
 
+function getCafesAndMilksJoin(testConn){
+  let conn = testConn || db
+
+  return conn('Cafes_and_Milks').select()
+}
+
+function addCafesMilksJoin(dataObj, testConn){
+  let conn = testConn || db;
+  // console.log(dataObj)
+    return conn('Cafes_and_Milks')
+      .insert(
+        dataObj
+      )
+}
+
+
 
 module.exports = {
   getAllCafes,
@@ -93,5 +109,7 @@ module.exports = {
   addCafe,
   cafeExists,
   addMilk,
-  milkExists
+  milkExists,
+  addCafesMilksJoin,
+  getCafesAndMilksJoin
 };
