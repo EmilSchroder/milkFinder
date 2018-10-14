@@ -24,6 +24,7 @@ class UpdateScreen extends React.Component {
         // this.handleCheckboxChange = this.handleCheckboxChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
         this.postCafe = this.postCafe.bind(this)
+        this.postCafesAndMilks = this.postCafesAndMilks.bind(this)
         this.handleTextChange = this.handleTextChange.bind(this)
         this.checked = this.checked.bind(this)
     }
@@ -36,7 +37,7 @@ class UpdateScreen extends React.Component {
         e.preventDefault()
         this.postCafe(this.state.cafename, this.state.lat, this.state.lon, this.state.web)
             .then(res => {
-                postCafesAndMilks(res.id, this.state.milks)
+                this.postCafesAndMilks(res.body.id, this.state.milks)
             })
     }
 
@@ -57,7 +58,7 @@ class UpdateScreen extends React.Component {
     }
 
     handleTextChange(e){
-        console.log(e.target.value)
+        // console.log(e.target.value)
         let key = e.target.name
         let value = e.target.value
         this.setState({
@@ -66,7 +67,12 @@ class UpdateScreen extends React.Component {
     }    
 
     postCafesAndMilks(cafeId, milkIdArray){
-        ///put call in here
+        return request.post(baseURL+`cafesandmilks`, {
+            'cafeId': cafeId,
+            'milkArr': milkIdArray
+        })
+        .then(res => alert('cafe added'))
+        .catch(err => alert(err))
     }
 
     postCafe(name, lat, long, website){
