@@ -20,10 +20,6 @@ router.post('/', (req,res) => {
     })
 
     db.addCafesMilksJoin(dataObj).then(id => res.json(id))
-    //  
-    // milkArr.map(milkId => {
-    //    db.addCafesMilksJoin(cafeId, milkId).then(id => res.json(id)) 
-    // })
 
     
 })
