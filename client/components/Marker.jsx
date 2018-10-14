@@ -68,6 +68,7 @@ class Marker extends React.Component {
     
 
     render(){
+        console.log(this.props.name, this.props.cafeId)
         return(
             <React.Fragment>
 
