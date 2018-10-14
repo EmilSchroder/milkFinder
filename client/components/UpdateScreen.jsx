@@ -15,13 +15,17 @@ import { fetchAllMilks} from '../actions'
 class UpdateScreen extends React.Component {
     constructor(props){
         super(props)
-        console.log('props', this.props)
-        this.state={}
+        // console.log('props', this.props)
+
+        this.state={
+            milks:[]
+        }
 
         // this.handleCheckboxChange = this.handleCheckboxChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
         this.postCafe = this.postCafe.bind(this)
         this.handleTextChange = this.handleTextChange.bind(this)
+        this.checked = this.checked.bind(this)
     }
 
     componentDidMount() {
@@ -36,12 +40,21 @@ class UpdateScreen extends React.Component {
             })
     }
 
-    // handleCheckboxChange(e){
-    //     let key = e.target.name
-    //     this.setState(prevState => ({
-    //         [key]: !prevState[key]
-    //     }))
-    // }
+    checked(e){
+        let newArr = [...this.state.milks]
+
+        if(this.state.milks.find(milk => milk==e.target.value)){
+            newArr = newArr.filter(unselectedMilk => unselectedMilk !== e.target.value)
+        } else {
+            newArr = [...this.state.milks, e.target.value]
+        }
+
+         
+        // console.log(newArr)
+        this.setState({
+            milks: newArr
+        })
+    }
 
     handleTextChange(e){
         console.log(e.target.value)
@@ -68,6 +81,7 @@ class UpdateScreen extends React.Component {
     
 
     render(){
+        // console.log(this.state)
         return(
 
             <div>
@@ -86,7 +100,7 @@ class UpdateScreen extends React.Component {
                             {this.props.allMilks.map(milk => {
                                 return(
                                     <label key={milk.id}>
-                                        <input  type='checkbox' value={milk.milk_type} />
+                                        <input onChange={(e)=> this.checked(e)} type='checkbox' value={milk.id} />
                                         {milk.milk_type}
                                     </label>
                                 )
