@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import request from 'superagent'
 
-const baseURL = 'https://milkfinder.herokuapp.com/api/'
+const baseURL = 'http://localhost:3000/api/' //'https://milkfinder.herokuapp.com/api/'
 
 
 
