@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import request from 'superagent'
 import {Link} from 'react-router-dom'
 
-const baseURL = 'https://milkfinder.herokuapp.com/api/'
+const baseURL = 'http://localhost:3000/api/' //'https://milkfinder.herokuapp.com/api/'
 
 import TitleHead from './TitleHead'
 import { fetchAllMilks} from '../actions'
@@ -37,7 +37,7 @@ class UpdateScreen extends React.Component {
         e.preventDefault()
         this.postCafe(this.state.cafename, this.state.lat, this.state.lon, this.state.web)
             .then(res => {
-                console.log('this is the res.body', res.body)
+                console.log('this is the res.body', res.body.id)
                 this.postCafesAndMilks(res.body.id, this.state.milks)
             })
     }
@@ -83,7 +83,6 @@ class UpdateScreen extends React.Component {
                 longitude: long,
                 website: website
             })
-            .then(res => res)
             .catch(err=> err.status==400 ? alert('cafe already exists') : alert(err))
     }
         

@@ -12,14 +12,16 @@ router.get('/', (req,res) => {
 router.post('/', (req,res) => {
 
     const {cafeId, milkArr} = req.body
-    console.log(cafeId, milkArr, 'this is the server')
     const dataObj = []
     
     milkArr.map(milkId => {
         return dataObj.push({"cafe_id":cafeId, "milk_id":milkId})
     })
 
-    db.addCafesMilksJoin(dataObj).then(id => res.json(id))
+    db.addCafesMilksJoin(dataObj).then(id =>{
+        console.log(cafeId, milkArr, 'this is the server')
+        return res.json(id)
+    }) 
 
     
 })
