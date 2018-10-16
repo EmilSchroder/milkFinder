@@ -37,6 +37,7 @@ class UpdateScreen extends React.Component {
         e.preventDefault()
         this.postCafe(this.state.cafename, this.state.lat, this.state.lon, this.state.web)
             .then(res => {
+                console.log('this is the res.body', res.body)
                 this.postCafesAndMilks(res.body.id, this.state.milks)
             })
     }

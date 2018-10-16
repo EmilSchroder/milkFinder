@@ -12,7 +12,7 @@ router.get('/', (req,res) => {
 router.post('/', (req,res) => {
 
     const {cafeId, milkArr} = req.body
-
+    console.log(cafeId, milkArr, 'this is the server')
     const dataObj = []
     
     milkArr.map(milkId => {
