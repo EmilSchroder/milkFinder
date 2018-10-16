@@ -1,7 +1,7 @@
 import React from 'react'
 import request from 'superagent'
 
-const baseURL = 'http://localhost:3000/api/' //'https://milkfinder.herokuapp.com/api/'
+const baseURL = 'https://milkfinder.herokuapp.com/api/'
 import {connect} from 'react-redux'
 import { updateActiveCafe } from '../actions'
 
