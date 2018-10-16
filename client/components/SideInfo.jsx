@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import request from 'superagent'
 
-const baseURL = 'https://milkfinder.herokuapp.com/api/'
+const baseURL = 'http://localhost:3000/api/' //'https://milkfinder.herokuapp.com/api/'
 
 
 
@@ -46,7 +46,7 @@ class SideInfo extends React.Component {
                    
                     <h1>{this.state.cafe['cafe_name' || 'name']}</h1>
                     {this.state.milks.map(milk => {
-                        return <p>{milk.milk_type}</p>
+                        return <p key={milk.milk_type}>{milk.milk_type}</p>
                     })}
 
                 </div>

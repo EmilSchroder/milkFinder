@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import request from 'superagent'
 import {Link} from 'react-router-dom'
 
-const baseURL = 'https://milkfinder.herokuapp.com/api/'
+const baseURL = 'http://localhost:3000/api/' //'https://milkfinder.herokuapp.com/api/'
 
 import TitleHead from './TitleHead'
 import { fetchAllMilks} from '../actions'

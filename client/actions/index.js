@@ -1,5 +1,5 @@
 import request from 'superagent'
-const baseURL = 'https://milkfinder.herokuapp.com/api/'
+const baseURL = 'http://localhost:3000/api/' //'https://milkfinder.herokuapp.com/api/'
 
 export const updateActiveMilk = (milko) =>{
     return {
