@@ -46,7 +46,7 @@ class SideInfo extends React.Component {
                    
                     <h1>{this.state.cafe['cafe_name' || 'name']}</h1>
                     {this.state.milks.map(milk => {
-                        return <p>{milk.milk_type}</p>
+                        return <p key={milk.milk_type}>{milk.milk_type}</p>
                     })}
 
                 </div>

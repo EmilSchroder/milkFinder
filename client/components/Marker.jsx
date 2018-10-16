@@ -28,8 +28,11 @@ class Marker extends React.Component {
     }
 
     selectIcon(){
-        console.log(this.props.name, this.state.numOfMilks)
+        // console.log(this.props.name, this.state.numOfMilks)
                 switch(this.state.numOfMilks){
+                    case 0: 
+                        
+                        return ''
                     case 1:
                     
                         return './images/onemilk.png'
@@ -39,12 +42,10 @@ class Marker extends React.Component {
                     case 3:
                     
                         return './images/threemilk.png'
-                    case 4:
-                    
-                        return './images/fourmilk.png'
                     default:
-                    
-                        return ''
+
+                        return './images/fourmilk.png'
+
                 }
     }
 
@@ -74,16 +75,16 @@ class Marker extends React.Component {
             <React.Fragment>
 
             <figure className='icon'>
-            <img src={this.selectIcon()} 
-                style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-            }} onClick={() => {
-                this.props.showSideInfo();
-                this.findActiveCafe(this.props.cafeId)
-                }} />
-            <figcaption className='tooltiptext'>{this.props.name}</figcaption>
+                <img src={this.selectIcon()} 
+                    style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                }} onClick={() => {
+                    this.props.showSideInfo();
+                    this.findActiveCafe(this.props.cafeId)
+                    }} />
+                <figcaption className='tooltiptext'>{this.props.name}</figcaption>
             </figure>
               </React.Fragment>   
 
