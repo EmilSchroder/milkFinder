@@ -82,7 +82,9 @@ class UpdateScreen extends React.Component {
                 latitude: lat,
                 longitude: long,
                 website: website
-            }).catch(err=> err.status==400 ? alert('cafe already exists') : alert(err))
+            })
+            .then(res => res)
+            .catch(err=> err.status==400 ? alert('cafe already exists') : alert(err))
     }
         
     

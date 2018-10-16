@@ -30,6 +30,7 @@ router.post('/', (req,res)=>{
     db.addCafe(cafe_name, latitude, longitude, website)
       .then(id => {
         if(id){
+          console.log('this is the id', id)
           return res.send({"message":"Added to database" , "id" : id[0]})
         }})
       .catch(err => {
