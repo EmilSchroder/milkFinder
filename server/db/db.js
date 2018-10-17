@@ -32,6 +32,9 @@ function addCafe(name, lat, long, web, testConn){
       longitude : long,
       website: web
     })
+    .then(item => {
+      return conn('Cafes').where("cafe_name", name)
+    })
 }
 
 function addMilk(name, testConn){
