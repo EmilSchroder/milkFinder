@@ -19,7 +19,6 @@ router.post('/', (req,res) => {
     })
 
     db.addCafesMilksJoin(dataObj).then(id =>{
-        console.log(cafeId, milkArr, 'this is the server')
         return res.json(id)
     }) 
 

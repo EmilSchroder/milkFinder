@@ -33,7 +33,7 @@ function addCafe(name, lat, long, web, testConn){
       website: web
     })
     .then(item => {
-      return conn('Cafes').where("cafe_name", name)
+      return conn('Cafes').where("cafe_name", name).first()
     })
 }
 

@@ -28,10 +28,11 @@ router.post('/', (req,res)=>{
         return res.status(400).send({message: 'Cafe already registered'})
       }
     db.addCafe(cafe_name, latitude, longitude, website)
-      .then(id => {
-        if(id){
-          console.log('this is the id', id)
-          return res.send({"message":"Added to database" , "id" : id[0]})
+      .then(obj => {
+        if(obj.id){
+          // console.log('this is the id', obj.id)
+          // console.log('this is the object', obj)
+          return res.send({"message":"Added to database" , "id" : obj.id})
         }})
       .catch(err => {
         res.status(500).send({message: err.message})
