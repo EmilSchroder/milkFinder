@@ -12,7 +12,6 @@ body{
     background-color: #111;
     overflow-x: hidden;
     transition: 0.5s;
-    /* padding-top: 60px; */
 }
 
 .close{
@@ -69,7 +68,7 @@ body{
     color: #fff;
     text-align: center;
     border-radius: 6px;
-    z-index: 5;
+    z-index: 4;
     padding: 2px;
 } 
 
