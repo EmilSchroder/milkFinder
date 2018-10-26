@@ -28,7 +28,6 @@ class Marker extends React.Component {
     }
 
     selectIcon(){
-        // console.log(this.props.name, this.state.numOfMilks)
                 switch(this.state.numOfMilks){
                     case 0: 
                         
@@ -70,7 +69,6 @@ class Marker extends React.Component {
     
 
     render(){
-        console.log(window.visualViewport.width)
         return(
             <React.Fragment>
 
