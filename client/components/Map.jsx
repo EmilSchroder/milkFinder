@@ -28,7 +28,7 @@ class Map extends React.Component {
 
 
   showSideInfo(info) {
-    document.getElementById('sideInfo').style.width = window.innerWidth > 425 ? '300px' : '50%';
+    document.getElementById('sideInfo').style.width = window.innerWidth > 425 ? '300px' : '100%';
 
   }
 

@@ -118,7 +118,9 @@ image {
     .wrapper{
         height: 50%;
     }
-
+    .sidenav p{
+        font-size: 20px;
+    }
 }
 
 select{
