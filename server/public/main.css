@@ -14,6 +14,10 @@ body{
     transition: 0.5s;
 }
 
+#map {
+    cursor: pointer;
+}
+
 .close{
     position: absolute;
     top:3px;
@@ -32,10 +36,9 @@ body{
     color: white;
     display: block;
 }
+
 .sidenav :hover {
-
     cursor: default;
-
 }
 
 
@@ -56,9 +59,14 @@ body{
 
 .icon{
     margin: 0;
-    height: 30px;
-    width: 30px;
+    height: '30px';
+    width: '30px';
     z-index: 1;
+    cursor: pointer;
+}
+
+image {
+    cursor: pointer;
 }
 
 .tooltiptext {
@@ -98,6 +106,21 @@ body{
     justify-content: center;
     height: 37%;
     background-color: rgb(190, 186, 186)
+}
+
+@media(max-width: 425px){
+    .header{
+        height: 20vh;
+    }
+    .flex{
+        height: 50%;
+    }
+    .wrapper{
+        height: 50%;
+    }
+    .sidenav p{
+        font-size: 20px;
+    }
 }
 
 select{

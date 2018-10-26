@@ -28,7 +28,6 @@ class Marker extends React.Component {
     }
 
     selectIcon(){
-        // console.log(this.props.name, this.state.numOfMilks)
                 switch(this.state.numOfMilks){
                     case 0: 
                         
@@ -70,7 +69,6 @@ class Marker extends React.Component {
     
 
     render(){
-        // console.log(this.props.name, this.props.cafeId)
         return(
             <React.Fragment>
 
@@ -80,6 +78,7 @@ class Marker extends React.Component {
                     display: 'inline-flex',
                     alignItems: 'center',
                     justifyContent: 'center',
+                    height: window.innerWidth > 460 ? '30px' : '35px',
                 }} onClick={() => {
                     this.props.showSideInfo();
                     this.findActiveCafe(this.props.cafeId)

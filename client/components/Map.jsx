@@ -23,11 +23,12 @@ class Map extends React.Component {
     this.props.dispatch(fetchAllMilks())  
     this.props.dispatch(fetchAllCafes())
     this.props.dispatch(displayAllCafes())
+    window.addEventListener('resize', () => console.log(window.innerWidth));
   }
 
 
   showSideInfo(info) {
-    document.getElementById('sideInfo').style.width = '300px';
+    document.getElementById('sideInfo').style.width = window.innerWidth > 425 ? '300px' : '100%';
 
   }
 
@@ -39,7 +40,7 @@ class Map extends React.Component {
     return (
       <React.Fragment>
         <Search />
-        <div id="map" style={{ height: '82vh', width: '100%' }}>
+        <div id="map" style={ { height: '82vh', width: '100%' } }>
           <SideInfo
             closeSideBar={this.closeSideBar}
             activeCafe={this.props.activeCafe}
@@ -49,7 +50,7 @@ class Map extends React.Component {
               key: 'AIzaSyC1GuaSVOn1QvNgS0ysm9mH4V7c7yurAoI'
             }}
             defaultCenter={{ lat: -41.2969757, lng: 174.7742823 }}
-            defaultZoom={9}
+            defaultZoom={window.innerWidth > 425 ? 9 : 13}
             onClick={() => this.closeSideBar()}
           >
             {this.props.displayedCafes.map(cafe => {
