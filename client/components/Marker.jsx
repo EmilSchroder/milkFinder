@@ -78,7 +78,7 @@ class Marker extends React.Component {
                     display: 'inline-flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    height: window.innerWidth > 460 ? '30px' : '50px',
+                    height: window.innerWidth > 460 ? '30px' : '35px',
                 }} onClick={() => {
                     this.props.showSideInfo();
                     this.findActiveCafe(this.props.cafeId)

@@ -28,7 +28,7 @@ class Map extends React.Component {
 
 
   showSideInfo(info) {
-    document.getElementById('sideInfo').style.width = '300px';
+    document.getElementById('sideInfo').style.width = window.innerWidth > 425 ? '300px' : '50%';
 
   }
 
@@ -40,7 +40,7 @@ class Map extends React.Component {
     return (
       <React.Fragment>
         <Search />
-        <div id="map" style={{ height: '82vh', width: '100%' }}>
+        <div id="map" style={ { height: '82vh', width: '100%' } }>
           <SideInfo
             closeSideBar={this.closeSideBar}
             activeCafe={this.props.activeCafe}

@@ -108,6 +108,19 @@ image {
     background-color: rgb(190, 186, 186)
 }
 
+@media(max-width: 425px){
+    .header{
+        height: 20vh;
+    }
+    .flex{
+        height: 50%;
+    }
+    .wrapper{
+        height: 50%;
+    }
+
+}
+
 select{
     border-radius: 5%;
     width: 20%;
