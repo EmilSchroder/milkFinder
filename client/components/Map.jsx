@@ -50,7 +50,7 @@ class Map extends React.Component {
               key: 'AIzaSyC1GuaSVOn1QvNgS0ysm9mH4V7c7yurAoI'
             }}
             defaultCenter={{ lat: -41.2969757, lng: 174.7742823 }}
-            defaultZoom={window.innerWidth > 980 ? 9 : 16}
+            defaultZoom={window.innerWidth > 425 ? 9 : 13}
             onClick={() => this.closeSideBar()}
           >
             {this.props.displayedCafes.map(cafe => {
