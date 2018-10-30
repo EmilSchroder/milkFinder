@@ -3,7 +3,7 @@
   "version": "0.2.1",
   "description": "A webpack React starter",
   "repository": "https://github.com/dev-academy-challenges/boilerplate-react-webpack.git",
-  "main": "server/index.js",
+  "main": "./server/index.js",
   "author": "EDA",
   "license": "ISC",
   "scripts": {

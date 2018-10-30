@@ -2,7 +2,7 @@ import React from 'react';
 import GoogleMapReact from 'google-map-react';
 import { connect } from 'react-redux'
 
-// import { getAllCafes } from '../cafeApi/cafeApi';
+
 import { fetchAllMilks, fetchAllCafes, displayAllCafes, findActiveCafe } from '../actions'
 
 import Marker from './Marker';
