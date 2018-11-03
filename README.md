@@ -1,4 +1,8 @@
-# Find the milk a cafe has
+# www.milkfinder.herokuapp.com
+
+Visit and add a cafe with it's associated milks
+
+## Find the milk a cafe has
 
 This project is to give Wellingtonians a view of what milks are available at what cafes in their cities. 
 
