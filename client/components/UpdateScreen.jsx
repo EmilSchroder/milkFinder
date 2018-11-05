@@ -3,25 +3,24 @@ import { connect } from 'react-redux'
 import request from 'superagent'
 import {Link} from 'react-router-dom'
 
-const baseURL = 'https://milkfinder.herokuapp.com/api/'
+// const baseURL = 'https://milkfinder.herokuapp.com/api/'
+const googlePlacesURL = 'https://maps.googleapis.com/maps/api/place/autocomplete/json?'
 
 import TitleHead from './TitleHead'
+import AutoCompletePlace from './AutoCompletePlace'
 import { fetchAllMilks} from '../actions'
 
-// import {addCafe} from '../cafeApi/cafeApi'
 
 
 
 class UpdateScreen extends React.Component {
     constructor(props){
         super(props)
-        // console.log('props', this.props)
 
         this.state={
             milks:[]
         }
 
-        // this.handleCheckboxChange = this.handleCheckboxChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
         this.postCafe = this.postCafe.bind(this)
         this.postCafesAndMilks = this.postCafesAndMilks.bind(this)
@@ -98,6 +97,8 @@ class UpdateScreen extends React.Component {
                 <div className='formwrapper'>
                     <form onSubmit={this.handleSubmit}>
                         <h1>Add a Cafe</h1>
+
+                        <AutoCompletePlace />
 
                         <input type='text' autoComplete="off" placeholder='Cafe Name' name='cafename' onChange={this.handleTextChange} />
                         <input type='text' autoComplete="off" placeholder='Latitude' name='lat' onChange={this.handleTextChange} />
